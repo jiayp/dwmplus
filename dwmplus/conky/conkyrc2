@@ -1,0 +1,39 @@
+
+background no
+out_to_console yes
+out_to_x no
+use_spacer none
+update_interval 1
+total_run_times 0
+
+##############################################
+#  Output
+##############################################
+TEXT
+#$mpd_smart :: ${cpu cpu1}% / ${cpu cpu2}%  ${loadavg 1} ${loadavg 2 3} :: ${acpitemp}c :: $memperc% ($mem) :: ${downspeed eth0}K/s ${upspeed eth0}K/s :: ${time %a %b %d %I:%M%P}
+
+#检测CPU的温度等需要安装 #pacman -S lm_sensors 可参考：http://blog.sina.com.cn/s/blog_4b0d430a0100n3nw.html
+
+#检测硬盘的温度需要安装hddtemp程序，并将温度剪切出来，硬盘不同剪切的位置不同，可在终端里面执行sudo hddtemp /dev/sda以确定位置。
+
+#判断在这里进行,其中颜色的定义在config.h里面
+#${hwmon 0 temp 1}°	内存温度
+#${hwmon 0 temp 2}°	CPU温度
+#${hwmon 0 fan 2}RPM	CPU风扇转速	
+
+${exec echo -e "\004"}▪${if_match "${downspeed eth0}">"0B"}${exec echo -e "\005"}${else}${exec echo -e "\001"}${endif}↓${downspeed eth0}${if_match "${upspeed eth0}">"0B"}${exec echo -e "\007"}${else}${exec echo -e "\001"}${endif}↑${upspeed eth0}${exec echo -e "\001"}${exec echo -e "\004"}▪\
+${exec echo -e "\001"}${if_match ${cpu cpu0}>=60}${exec echo -e "\006"}${endif}${if_match ${cpu cpu0}>=85}${exec echo -e "\003"}${endif}${cpu cpu0}% ${hwmon 0 temp 2}° ${hwmon 0 fan 2}RPM${exec echo -e "\004"}▪\
+${exec echo -e "\001"}${if_match ${memperc}>=80}${exec echo -e "\006"}${endif}${memperc}% $mem ${exec echo -e "\001"}${hwmon 0 temp 1}°${exec echo -e "\007"}${exec echo -e "\004"}▪\
+${exec echo -e "\001"}HD${exec hddtemp /dev/sda | cut -c30-34}${exec echo -e "\004"}▪\
+${exec echo -e "\005"}${if_existing /sys/class/power_supply/BAT1/present}Bat ${battery_percent BAT1}% ${battery_time BAT1}${else}AC${endif}${exec echo -e "\001"}\
+${exec echo -e "\004"}▪${exec echo -e "\005"}${time %d %a %H:%M}\
+${exec echo -e "\004"}▪${exec echo -e "\001"}${mixer}${exec echo -e "\004"}▪
+
+
+#备份，实现温度和风扇转速的方式不同
+#[${if_match "${downspeed eth0}">"0B"}${exec echo -e "\005"}${else}${exec echo -e "\001"}${endif}↓${downspeed eth0}${if_match "${upspeed eth0}">"0B"}${exec echo -e "\007"}${else}${exec echo -e "\001"}${endif}↑${upspeed eth0}${exec echo -e "\001"}]\
+#[${if_match ${cpu cpu0}>=60}${exec echo -e "\006"}${endif}${if_match ${cpu cpu0}>=85}${exec echo -e "\003"}${endif}${cpu cpu0}% ${execi 6 /usr/bin/sensors | grep temp\2| paste -s | cut -c15-21} ${execi 6 /usr/bin/sensors | grep fan2| paste -s | cut -c13-20}${exec echo -e "\001"}]\
+#[${if_match ${memperc}>=80}${exec echo -e "\006"}${endif}${membar}$mem ${exec echo -e "\001"}${execi 6 /usr/bin/sensors | grep temp\1| paste -s | cut -c15-21} HD${exec hddtemp /dev/sda | cut -c30-35}]\
+#[${exec echo -e "\005"}${if_existing /sys/class/power_supply/BAT1/present}Bat ${battery_percent BAT1}% ${battery_time BAT1}${else}AC${endif}${exec echo -e "\001"}]\
+#${exec echo -e "\001"}[${exec echo -e "\005"}${time %d %a %H:%M} ${exec echo -e "\001"}${mixer}${exec echo -e "\001"}]
+

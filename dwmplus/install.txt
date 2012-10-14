@@ -1,0 +1,6 @@
+1. in the current user's root directory create a. dwm directory, copy the conkyrc and autostart.sh to this directory.
+2. In. xinitrc I added dwm. ubuntu will dwm.desktop copied to / usr / shart / xsessions, so that the login manager which you can see dwm options.
+3. compile and install dwm.
+
+Install X11 development environment: sudo apt-get install libx11-dev
+Or: sudo apt-get install libx *-*- dev (This installation is the most comprehensive, most applications can be compiled)

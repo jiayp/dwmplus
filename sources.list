@@ -1,0 +1,37 @@
+deb http://ubuntu.cn99.com/ubuntu/ hardy main restricted universe multiverse
+deb http://ubuntu.cn99.com/ubuntu/ hardy-security main restricted universe multiverse
+deb http://ubuntu.cn99.com/ubuntu/ hardy-updates main restricted universe multiverse
+deb http://ubuntu.cn99.com/ubuntu/ hardy-proposed main restricted universe multiverse
+deb http://ubuntu.cn99.com/ubuntu/ hardy-backports main restricted universe multiverse
+deb-src http://ubuntu.cn99.com/ubuntu/ hardy main restricted universe multiverse
+deb-src http://ubuntu.cn99.com/ubuntu/ hardy-security main restricted universe multiverse
+deb-src http://ubuntu.cn99.com/ubuntu/ hardy-updates main restricted universe multiverse
+deb-src http://ubuntu.cn99.com/ubuntu/ hardy-proposed main restricted universe multiverse
+deb-src http://ubuntu.cn99.com/ubuntu/ hardy-backports main restricted universe multiverse
+
+deb http://mirror.lupaworld.com/ubuntu hardy main restricted universe multiverse
+deb http://mirror.lupaworld.com/ubuntu hardy-security main restricted universe multiverse
+deb http://mirror.lupaworld.com/ubuntu hardy-updates main restricted universe multiverse
+deb http://mirror.lupaworld.com/ubuntu hardy-backports main restricted universe multiverse
+deb http://mirror.lupaworld.com/ubuntu hardy-proposed main restricted universe multiverse
+deb-src http://mirror.lupaworld.com/ubuntu hardy main restricted universe multiverse
+deb-src http://mirror.lupaworld.com/ubuntu hardy-security main restricted universe multiverse
+deb-src http://mirror.lupaworld.com/ubuntu hardy-updates main restricted universe multiverse
+deb-src http://mirror.lupaworld.com/ubuntu hardy-backports main restricted universe multiverse
+deb-src http://mirror.lupaworld.com/ubuntu hardy-proposed main restricted universe multiverse
+
+deb http://archive.ubuntu.com/ubuntu/ hardy main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu/ hardy-security main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu/ hardy-updates main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu/ hardy-proposed main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu/ hardy-backports main restricted universe multiverse
+deb-src http://archive.ubuntu.com/ubuntu/ hardy main restricted universe multiverse
+deb-src http://archive.ubuntu.com/ubuntu/ hardy-security main restricted universe multiverse
+deb-src http://archive.ubuntu.com/ubuntu/ hardy-updates main restricted universe multiverse
+deb-src http://archive.ubuntu.com/ubuntu/ hardy-proposed main restricted universe multiverse
+deb-src http://archive.ubuntu.com/ubuntu/ hardy-backports main restricted universe multiverse
+
+deb http://www.telemail.fi/mlind/ubuntu feisty fonts 
+deb-src http://www.telemail.fi/mlind/ubuntu feisty fonts
+
+deb http://packages.medibuntu.org/ hardy free non-free
