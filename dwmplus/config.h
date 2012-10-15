@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const char font[] = "WenQuanYi Zen Hei:size=11"; //定义字体
+static const char font[] = "WenQuanYi Micro Hei:size=11"; //定义字体
 
 #define NUMCOLORS	8	//定义程序中使用几种颜色
 static const char colors[NUMCOLORS][ColLast][8]	= {
@@ -59,13 +59,17 @@ static const Rule rules[] = {
   
   // 下列程序打开时处于浮动状态
   { "DoubleBall_QT", NULL,    NULL,       0,       	   True,        -1 }, 
-  { "Stardict",   NULL,       NULL,       0,            True,        -1 },
-  { "Smplayer",   NULL,       NULL,       0,            True,        -1 },
-  { "Vlc",        NULL,       NULL,       0,            True,        -1 },
-  { "Volumeicon",        NULL,       NULL,       0,            True,        -1 },
-  { "VirtualBox", NULL,	  NULL,		  0,			True,		 -1 },
-  { "Pidgin",        NULL,       NULL,       0,            True,        -1 },
-  { "Gimp",      NULL,        NULL,       0,            True,        -1 },
+  { "Stardict",      NULL,    NULL,       0,           True,        -1 },
+  { "Rhythmbox",      NULL,   NULL,       0,           True,        -1 },
+  { "Smplayer",      NULL,   NULL,        0,           True,        -1 },
+  { "Vlc",           NULL,    NULL,       0,           True,        -1 },
+  { "Volumeicon",    NULL,    NULL,       0,           True,        -1 },
+  { "VirtualBox",    NULL,	  NULL,		  1<<3,		   True,		-1 },
+  { "Pidgin",        NULL,    NULL,       0,           True,        -1 },
+  { "Thunderbird",   NULL,    NULL,       1<<4,        True,        -1 },
+  { "Gimp",          NULL,    NULL,       0,           True,        -1 },
+  { "Iptux",         NULL,    NULL,       0,           True,        -1 },
+  { "Amsn",         NULL,    NULL,       0,            True,        -1 },
 
 };
 
@@ -86,7 +90,7 @@ static const Layout layouts[]  = {
 /* key definitions */
 #define MODKEY Mod4Mask // use windows key
 #define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
+	{ MODKEY,                       KEY,      view_layout,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
@@ -96,13 +100,14 @@ static const Layout layouts[]  = {
 
 /* commands 定义各种命令，以便用快捷键调用*/
 // -b 表示dmenu在屏幕下方显示
-static const char *dmenucmd[] = { "dmenu_run" , "-p" ,"Run:" , "-fn", font,"-nb", colors[0][ColBG], "-nf", colors[0][ColFG], "-sb", colors[1][ColBG], "-sf", colors[1][ColFG], NULL };
+static const char *dmenucmd[] = { "dmenu_run" , "-p" , "Run:" , "-fn", font, "-nb", colors[0][ColBG], "-nf", colors[0][ColFG], "-sb", colors[1][ColBG], "-sf", colors[1][ColFG], NULL };
 static const char *xkill[]    = { "xkill", NULL };
-static const char *termcmd[]  = { "gnome-terminal", NULL };
+static const char *termcmd[]  = { "terminal", NULL };
 static const char *stardict[]  = { "stardict", NULL };
 static const char *lockscreencmd[]  = { "slock", NULL };
 static const char *browsercmd[]     = { "opera", NULL };
 static const char *browseraltcmd[]  = { "firefox", NULL };
+static const char *mailcmd[]        = { "thunderbird", NULL };
 static const char *filemgrcmd[]     = { "xfe", NULL };
 static const char *netmgrcmd[]      = { "xterm", "-e", "wicd-curses", NULL };
 static const char *screenshotcmd[]  = { "scrot", NULL };
@@ -132,6 +137,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_q,      spawn,          {.v = lockscreencmd } },
 	{ MODKEY,                       XK_w,      spawn,          {.v = browsercmd } },	
 	{ MODKEY|ShiftMask,             XK_w,      spawn,          {.v = browseraltcmd } },		
+	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = mailcmd} },		
 	//执行文件管理器thunar
 	{ MODKEY,                       XK_e,      spawn,          {.v = filemgrcmd } },
 	{ MODKEY|ShiftMask,             XK_n,      spawn,          {.v = netmgrcmd } },
@@ -177,9 +183,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY|ShiftMask,      XK_t,      setlayout,      {.v = &layouts[3]} },  
+	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[3]} },  
 	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[4]} },
-	{ MODKEY|ShiftMask,      XK_g,      setlayout,      {.v = &layouts[5]} },
+	{ MODKEY|ShiftMask,             XK_g,      setlayout,      {.v = &layouts[5]} },
 	
 	{ MODKEY,                       XK_space,  setlayout,      {0} }, 
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} }, 

@@ -80,6 +80,26 @@ typedef union {
 	const void *v;
 } Arg;
 
+typedef struct{
+	unsigned int tag;
+	Arg arg;
+} Arg_Tag;
+
+Arg_Tag g_layout[10] = {
+	{0xFF,NULL},
+	{0xFF,NULL},
+	{0xFF,NULL},
+	{0xFF,NULL},
+	{0xFF,NULL},
+	{0xFF,NULL},
+	{0xFF,NULL},
+	{0xFF,NULL},
+	{0xFF,NULL},
+	{0xFF,NULL},
+
+};
+unsigned int g_cur = 0;
+
 typedef struct {
 	unsigned int click;
 	unsigned int mask;
@@ -95,10 +115,11 @@ struct Client {
 	float mina, maxa;
 	int x, y, w, h;
 	int oldx, oldy, oldw, oldh;
+	int sfx, sfy, sfw, sfh; /* stored float geometry, used on mode revert */
 	int basew, baseh, incw, inch, maxw, maxh, minw, minh;
 	int bw, oldbw;
 	unsigned int tags;
-	Bool isfixed, isfloating, isurgent, oldstate;
+	Bool isfixed, isfloating, isurgent, oldstate,needresize;
 	Client *next;
 	Client *snext;
 	Monitor *mon;
@@ -280,6 +301,7 @@ static void	      updatesizehints(Client *c);
 static void	      updatestatus(void);
 static void	      updatetitle(Client *c);
 static void	      updatewmhints(Client *c);
+static void	      view_layout(const Arg *arg);
 static void	      view(const Arg *arg);
 static Client	     *wintoclient(Window w);
 static Monitor	     *wintomon(Window w);
@@ -702,6 +724,8 @@ configurerequest(XEvent *e) {
 				configure(c);
 			if(ISVISIBLE(c))
 				XMoveResizeWindow(dpy, c->win, c->x, c->y, c->w, c->h);
+			else
+				c->needresize=1;
 		}
 		else
 			configure(c);
@@ -1629,6 +1653,10 @@ manage(Window w, XWindowAttributes *wa) {
 	XSetWindowBorder(dpy, w, dc.colors[0][ColBorder]);
 	configure(c); /* propagates border_width, if size doesn't change */
 	updatesizehints(c);
+	c->sfx = c->x;
+	c->sfy = c->y;
+	c->sfw = c->w;
+	c->sfh = c->h;
 	XSelectInput(dpy, w, EnterWindowMask|FocusChangeMask|PropertyChangeMask|StructureNotifyMask);
 	grabbuttons(c, False);
 	if(!c->isfloating)
@@ -2018,7 +2046,11 @@ setlayout(const Arg *arg) {
 	if(!arg || !arg->v || arg->v != selmon->lt[selmon->sellt])
 		selmon->sellt ^= 1;
 	if(arg && arg->v)
+	{
 		selmon->lt[selmon->sellt] = (Layout *)arg->v;
+		g_layout[g_cur].arg.v = arg->v;
+		g_layout[g_cur].tag = g_cur;
+	}
 	strncpy(selmon->ltsymbol, selmon->lt[selmon->sellt]->symbol, sizeof selmon->ltsymbol);
 	if(selmon->sel)
 		arrange(selmon);
@@ -2121,7 +2153,12 @@ showhide(Client *c) {
 	if(!c)
 		return;
 	if(ISVISIBLE(c)) { /* show clients top down */
-		XMoveWindow(dpy, c->win, c->x, c->y);
+		if(c->needresize) {
+			c->needresize=0;
+			XMoveResizeWindow(dpy, c->win, c->x, c->y, c->w, c->h);
+		} else {
+			XMoveWindow(dpy, c->win, c->x, c->y);
+		}
 		if(!c->mon->lt[c->mon->sellt]->arrange || c->isfloating)
 			resize(c, c->x, c->y, c->w, c->h, False);
 		showhide(c->snext);
@@ -2269,8 +2306,16 @@ togglefloating(const Arg *arg) {
 		return;
 	selmon->sel->isfloating = !selmon->sel->isfloating || selmon->sel->isfixed;
 	if(selmon->sel->isfloating)
-		resize(selmon->sel, selmon->sel->x, selmon->sel->y,
-		       selmon->sel->w, selmon->sel->h, False);
+		/*restore last known float dimensions*/
+		resize(selmon->sel, selmon->sel->sfx, selmon->sel->sfy,
+		       selmon->sel->sfw, selmon->sel->sfh, False);
+	else {
+		/*save last known float dimensions*/
+		selmon->sel->sfx = selmon->sel->x;
+		selmon->sel->sfy = selmon->sel->y;
+		selmon->sel->sfw = selmon->sel->w;
+		selmon->sel->sfh = selmon->sel->h;
+	}
 	arrange(selmon);
 }
 
@@ -2554,6 +2599,34 @@ updatewmhints(Client *c) {
 		XFree(wmh);
 	}
 }
+
+
+static unsigned int get_bit_pos(unsigned int n)
+{
+	unsigned int i = 0;	
+	if(n > 0){
+		while((n >> i) != 1) {
+			i++;
+		}
+	}
+	return i;
+
+}
+void
+view_layout(const Arg *arg) {
+	if((arg->ui & TAGMASK) == selmon->tagset[selmon->seltags])
+		return;
+	selmon->seltags ^= 1; /* toggle sel tagset */
+	if(arg->ui & TAGMASK)
+		selmon->tagset[selmon->seltags] = arg->ui & TAGMASK;
+	arrange(selmon);
+	g_cur = get_bit_pos(arg->ui);
+	if(g_layout[g_cur].tag != 0xFF)
+	{
+		setlayout(&g_layout[g_cur].arg);
+	}
+}
+
 
 void
 view(const Arg *arg) {

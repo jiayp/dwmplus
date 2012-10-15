@@ -1,48 +1,69 @@
-#!/bin/bash 
-function csset(){
-echo "create cscope.files"
-for arg in "$@"
-do
-    echo "find *.c *.h  *.cpp  *.S *.java  in $arg"
-    find $arg -name "*.[chS]" -o -name "*.cpp" \
-           -o -name "*.java"  >> cscope.files
- done
-
- echo "ctags -L cscope.files"
- ctags  -L cscope.files
- echo "creat cscope.out"
- cscope -bkq -i cscope.files
-
- echo "end success"
-
-}
-
-function csseta(){
-echo "create cscope.files"
-for arg in "$@"
-do
-    find $arg -type f  >> cscope.files
- done
-
- echo "ctags -L cscope.files"
- ctags  -L cscope.files
- echo "creat cscope.out"
- cscope -bkq -i cscope.files
-
- echo "end success"
-}
-
-function csclean(){
-rm cscope.* tags
-}
-function kcs()
+#!/bin/bash
+function csset()
 {
-    echo "create cscope.files"
+	csclean 
+	echo "create cscope.files in $@"
+	for arg in $@
+	do
+		find ${arg} -name "*.[chmSs]" -o -name "*.java" -o -name "*.cpp" \
+		      	-o -name "*.hp" -o -name "*.cc"  >> cscope.files
+	done
 
-    find .  -name "*.[chS]"  -o -name "*.cpp" \
-           -o -name "*.java" |sed -e '/^.\/arch/d' > cscope.files
+	echo "create cscope"
+#cscope -bkqi cscope.files
+	 cscope -bki cscope.files
 
-    find arch/arm  -name "*.[chS]"  -o -name "*.cpp"  >> cscope.files
+	echo "create tags"
+	ctags --c++-kinds=+px --fields=+iaS --extra=+q  -L cscope.files
+	echo "create TAGS"
+	cat cscope.files|etags -
+	echo "create  success"
+}
+
+function csseta()
+{
+	rm  -rf cscope.* tags TAGS  
+	echo "create cscope.files in $@"
+	for arg in $@
+	do
+		find ${arg}  -type f >> cscope.files
+	done
+
+	echo "create cscope"
+	#cscope -bkqi cscope.files
+	cscope -bki cscope.files
+
+	echo "create tags"
+	ctags --c++-kinds=+px --fields=+iaS --extra=+q  -L cscope.files
+#	echo "create TAGS"
+#	etags -L cscope.files
+	cat cscope.files|etags -
+	echo "create  success"
+}
+
+
+function csclean()
+{
+	if [ $# -eq 0 ];then
+		rm  -rf cscope* tags TAGS 
+	else
+		for arg in $@
+		do
+			find $arg -name "cscope.*" -o -name tags |xargs rm -rf
+		done
+	fi
+}
+function cscleana()
+{
+	if [ $# -eq 0 ];then
+		rm  -rf cscope* tags TAGS *.taghl 
+	else
+		for arg in $@
+		do
+			find $arg -name "cscope.*" -o -name tags -o  -name "*.taghl" -o -name TAGS |xargs rm -rf
+		done
+	fi
+}
 
     echo "create tags"
         ctags -L cscope.files
