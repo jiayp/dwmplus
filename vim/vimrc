@@ -60,7 +60,7 @@ set smartindent
 set cindent 
 set tabstop=4
 set shiftwidth=4
-#set guifont=Inconsolata\ Medium\ 11
+"set guifont=Inconsolata\ Medium\ 11
 set guifont=Monaco\ Medium\ 9
 "set t_Co=256
 set nowrapscan
@@ -129,6 +129,12 @@ nmap <C-_>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-_>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
+nmap <M-[> :cs find c <C-R>=expand("<cword>")<CR><CR>
+nmap <M-\> :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <M-t> :cs f t 
+nmap <M-c> :cs find c <C-R>=expand("<cword>")<CR><CR> 
+nmap <M-f> :cs f f 
+nmap <M-e> :cs f e 
 "=> switch windows
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <C-j> <C-w>j
@@ -143,16 +149,11 @@ map <M-c> "+y
 map <M-v> "+p
 
 nmap <M-]> <C-]>
-nmap <M-[> :cs find c <C-R>=expand("<cword>")<CR><CR>
-nmap <M-\> :cs find s <C-R>=expand("<cword>")<CR><CR>
 nmap / <leader>r
-nmap <M-t> :cs f t 
 nmap <M-m> <leader>m
 nmap <M-d> <C-]>
-nmap <M-c> :cs find c <C-R>=expand("<cword>")<CR><CR> 
 nmap <M-j> <C-Tab>
 nmap <M-k> <C-S-Tab>
-nmap <M-f> :cs f f 
 
 imap <M-h> <Left>
 imap <M-l> <Right>
