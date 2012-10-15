@@ -184,7 +184,7 @@ nmap <F3> :TMiniBufExplorer <CR>
 """"minibufer set end"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 "color set
-nmap M <leader>m
+nmap M :nohlsearch<CR>:MarkClear<CR><leader>m
 nmap n <leader>/
 nmap N <leader>?
 nmap <leader>] <C-w>}
