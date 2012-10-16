@@ -15,8 +15,8 @@ function csset()
 
 	echo "create tags"
 	ctags --c++-kinds=+px --fields=+iaS --extra=+q  -L cscope.files
-	echo "create TAGS"
-	cat cscope.files|etags -
+#	echo "create TAGS"
+#	cat cscope.files|etags -
 	echo "create  success"
 }
 
@@ -37,7 +37,7 @@ function csseta()
 	ctags --c++-kinds=+px --fields=+iaS --extra=+q  -L cscope.files
 #	echo "create TAGS"
 #	etags -L cscope.files
-	cat cscope.files|etags -
+#	cat cscope.files|etags -
 	echo "create  success"
 }
 
@@ -65,13 +65,6 @@ function cscleana()
 	fi
 }
 
-    echo "create tags"
-        ctags -L cscope.files
-    echo "create cscope.out"
-        cscope -bkq -icscope.files
-
-
-}
 function ll()
 {
     ls -l $*
