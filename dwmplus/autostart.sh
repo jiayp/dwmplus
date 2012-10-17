@@ -25,5 +25,12 @@ parcellite &
 #检测文件的改变
 #xdg-user-dirs-gtk-update &
 
+feh --bg-fill /home/lijy/Documents/back.jpg  &
+nm-applet &
+gnome-sound-applet &
+while xsetroot -name "`date "+%F %A %R"`"
+do
+	sleep 1m
+done &
 
 
