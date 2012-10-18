@@ -413,7 +413,9 @@ function! s:RunGrepCmd(cmd, pattern, action)
         return
     endif
 
-    let tmpfile = tempname()
+    "let tmpfile = tempname()
+	let vim_pid = getpid()
+    let tmpfile = "~/.gvim.tmpfile_" . vim_pid
 
     let old_verbose = &verbose
     set verbose&vim
@@ -486,7 +488,7 @@ function! s:RunGrepRecursive(cmd_name, grep_cmd, action, ...)
 
     if a:grep_cmd == 'grep'
         let grep_path = g:Grep_Path
-        let grep_expr_option = '--'
+     "   let grep_expr_option = '--'
     elseif a:grep_cmd == 'fgrep'
         let grep_path = g:Fgrep_Path
         let grep_expr_option = '-e'
@@ -778,9 +780,10 @@ function! s:RunGrep(cmd_name, grep_cmd, action, ...)
 
     " Add /dev/null to the list of filenames, so that grep print the
     " filename and linenumber when grepping in a single file
-    let filenames = filenames . " " . g:Grep_Null_Device
+   " let filenames = filenames . " " . g:Grep_Null_Device
     let cmd = grep_path . " " . grep_opt . " -n "
-    let cmd = cmd . grep_expr_option . " " . pattern
+"    let cmd = cmd . grep_expr_option . " " . pattern
+    let cmd = cmd .  " " . pattern
     let cmd = cmd . " " . filenames
 
     call s:RunGrepCmd(cmd, pattern, a:action)
