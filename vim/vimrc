@@ -134,7 +134,6 @@ nmap <M-\> :cs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <M-t> :cs f t 
 nmap <M-c> :cs find c <C-R>=expand("<cword>")<CR><CR> 
 nmap <M-f> :cs f f 
-nmap <M-e> :cs f e 
 "=> switch windows
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <C-j> <C-w>j
@@ -168,6 +167,8 @@ nmap <M-RightMouse> :nohlsearch<CR>:MarkClear<CR>
 nmap <F5> :MarkClear<CR> :nohlsearch <CR>
 nmap <F6> :TlistClose<CR> :JavaBrowser <CR>
 
+nmap <M-e> :Grep <CR>
+nmap <M-q> :ccl <CR>
 nmap <F8> :edit ++ff=dos <CR>
 "=> minibufer set
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

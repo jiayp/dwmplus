@@ -727,6 +727,7 @@ function! s:RunGrep(cmd_name, grep_cmd, action, ...)
         let argcnt = argcnt + 1
     endwhile
 
+	let filenames = system('cat cscope.files|xargs')
     if grep_opt == ""
         let grep_opt = g:Grep_Default_Options
     endif
