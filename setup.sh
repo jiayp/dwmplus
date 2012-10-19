@@ -5,7 +5,7 @@ function csset()
 	echo "create cscope.files in $@"
 	for arg in $@
 	do
-		find ${arg} -name "*.[chmSs]" -o -name "*.java" -o -name "*.cpp" \
+		find ${arg} -type f -name "*.[chmSs]" -o -name "*.java" -o -name "*.cpp" \
 		      	-o -name "*.hp" -o -name "*.cc"  >> cscope.files
 	done
 
@@ -49,7 +49,7 @@ function csclean()
 	else
 		for arg in $@
 		do
-			find $arg -name "cscope.*" -o -name tags |xargs rm -rf
+			find $arg  -type f -name "cscope.*" -o -name tags |xargs rm -rf
 		done
 	fi
 }
@@ -60,7 +60,7 @@ function cscleana()
 	else
 		for arg in $@
 		do
-			find $arg -name "cscope.*" -o -name tags -o  -name "*.taghl" -o -name TAGS |xargs rm -rf
+			find $arg  -type f -name "cscope.*" -o -name tags -o  -name "*.taghl" -o -name TAGS |xargs rm -rf
 		done
 	fi
 }
