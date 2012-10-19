@@ -404,30 +404,11 @@ endif
 " RunGrepCmd()
 " Run the specified grep command using the supplied pattern
 function! s:RunGrepCmd(cmd, pattern, action)
-    let cmd_output = system(a:cmd)
+	let tmpfile = '~/.gvim.tmp' . getpid() 
+	let real_cmd = 'grep -e ' . a:pattern . ' `cat cscope.files` > ' . tmpfile
+	execute "silent! " real_cmd
 
-    if cmd_output == ""
-        echohl WarningMsg | 
-        \ echomsg "Error: Pattern " . a:pattern . " not found" | 
-        \ echohl None
-        return
-    endif
-
-    let tmpfile = tempname()
-
-    let old_verbose = &verbose
-    set verbose&vim
-
-    exe "redir! > " . tmpfile
     silent echon '[Search results for pattern: ' . a:pattern . "]\n"
-    silent echon cmd_output
-    redir END
-
-    let &verbose = old_verbose
-
-    let old_efm = &efm
-    set efm=%f:%\\s%#%l:%m
-
     if v:version >= 700 && a:action == 'add'
         execute "silent! caddfile " . tmpfile
     else
@@ -438,15 +419,13 @@ function! s:RunGrepCmd(cmd, pattern, action)
         endif
     endif
 
-    let &efm = old_efm
-
     " Open the grep output window
     if g:Grep_OpenQuickfixWindow == 1
         " Open the quickfix window below the current window
         botright copen
     endif
-
-    call delete(tmpfile)
+    
+    execute "silent! !rm -rf " . tmpfile
 endfunction
 
 " RunGrepRecursive()
@@ -726,8 +705,8 @@ function! s:RunGrep(cmd_name, grep_cmd, action, ...)
         endif
         let argcnt = argcnt + 1
     endwhile
-
-	let filenames = system('cat cscope.files|xargs')
+"    give a temp filenames
+    let filenames = "tmp"
     if grep_opt == ""
         let grep_opt = g:Grep_Default_Options
     endif
