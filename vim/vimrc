@@ -144,20 +144,20 @@ map <C-l> <C-w>l
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "=> normal set
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <M-c> "+y
-map <M-v> "+p
+"move
+nmap <M-j> <C-e>
+nmap <M-k> <C-y>
+"copy and paste
+nmap <M-c> "+y
+nmap <M-v> "+p
 
 nmap <M-]> <C-]>
 nmap / <leader>r
 nmap <M-m> <leader>m
 nmap <M-d> <C-]>
-nmap <M-j> <C-Tab>
-nmap <M-k> <C-S-Tab>
 
 imap <M-h> <Left>
 imap <M-l> <Right>
-imap <M-j> <Down>
-imap <M-k> <Up>
 
 nmap <F2> :Tlist<CR>
 nmap <M-LeftMouse> <LeftMouse><leader>m
