@@ -405,7 +405,7 @@ endif
 " Run the specified grep command using the supplied pattern
 function! s:RunGrepCmd(cmd, pattern, action)
 	let tmpfile = '~/.gvim.tmp' . getpid() 
-	let real_cmd = 'grep -e ' . a:pattern . ' `cat cscope.files` > ' . tmpfile
+	let real_cmd = '!grep -n -E ' . a:pattern . ' `cat cscope.files` > ' . tmpfile
 	execute "silent! " real_cmd
 
     silent echon '[Search results for pattern: ' . a:pattern . "]\n"

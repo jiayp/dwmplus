@@ -145,8 +145,8 @@ map <C-l> <C-w>l
 "=> normal set
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "move
-nmap <M-j> <C-e>
-nmap <M-k> <C-y>
+nmap <M-k> <C-e>
+nmap <M-j> <C-y>
 "copy and paste
 nmap <M-c> "+y
 nmap <M-v> "+p
