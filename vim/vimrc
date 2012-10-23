@@ -151,6 +151,9 @@ nmap <M-j> <C-y>
 nmap <M-c> "+y
 nmap <M-v> "+p
 
+"show marks
+nmap <M-1> :marks <CR>
+
 nmap <M-]> <C-]>
 nmap / <leader>r
 nmap <M-m> <leader>m
@@ -167,6 +170,7 @@ nmap <M-RightMouse> :nohlsearch<CR>:MarkClear<CR>
 nmap <F5> :MarkClear<CR> :nohlsearch <CR>
 nmap <F6> :TlistClose<CR> :JavaBrowser <CR>
 
+"grep -E 
 nmap <M-e> :Grep <CR>
 nmap <M-q> :ccl <CR>
 nmap <F8> :edit ++ff=dos <CR>
