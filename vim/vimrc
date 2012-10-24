@@ -145,14 +145,17 @@ map <C-l> <C-w>l
 "=> normal set
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "move
-nmap <M-k> <C-e>
-nmap <M-j> <C-y>
+nmap <M-k> 3<C-e>
+nmap <M-j> 3<C-y>
 "copy and paste
 nmap <M-c> "+y
 nmap <M-v> "+p
 
 "show marks
 nmap <M-1> :marks <CR>
+
+"set encoding
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
 nmap <M-]> <C-]>
 nmap / <leader>r
