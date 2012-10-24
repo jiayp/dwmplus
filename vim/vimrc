@@ -132,7 +132,6 @@ nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 nmap <M-[> :cs find c <C-R>=expand("<cword>")<CR><CR>
 nmap <M-\> :cs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <M-t> :cs f t 
-nmap <M-c> :cs find c <C-R>=expand("<cword>")<CR><CR> 
 nmap <M-f> :cs f f 
 "=> switch windows
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -148,7 +147,7 @@ map <C-l> <C-w>l
 nmap <M-k> 3<C-e>
 nmap <M-j> 3<C-y>
 "copy and paste
-nmap <M-c> "+y
+vmap <M-c> "+y
 nmap <M-v> "+p
 
 "show marks
