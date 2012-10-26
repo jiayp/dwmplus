@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/lijy/tmp/subversion-1.6.17dfsg/doc'
-let g:netrw_dirhist_2='/home/lijy/tmp/subversion-1.6.17dfsg/doc/user'
-let g:netrw_dirhist_3='/home/lijy/.subversion'
-let g:netrw_dirhist_4='/home/lijy/workspace/rda/bv5/soft/target/8851a_rdamodem'
-let g:netrw_dirhist_5='/home/lijy/workspace/rda/bv5/soft/target/8851a_rdamodem/include'
-let g:netrw_dirhist_6='/home/lijy/workspace/rda/bv5/soft/target/8851a_rdamodem'
