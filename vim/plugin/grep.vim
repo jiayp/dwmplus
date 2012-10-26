@@ -735,7 +735,9 @@ function! s:RunGrep(cmd_name, grep_cmd, action, ...)
 
     " Get the identifier and file list from user
     if pattern == "" 
-        let pattern = input("Search for pattern: ", expand("<cword>"))
+        echohl Question
+        let pattern = input("Search for pattern:", expand("<cword>"))
+	echohl None
         if pattern == ""
             return
         endif
