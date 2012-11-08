@@ -24,6 +24,7 @@ hi Keyword term=standout ctermfg=4 guifg=Brown
 hi Normal guibg=#CAE8F0 guifg=Black
 hi Comment  gui=italic
 hi cStatement term=standout ctermfg=4 guifg=Brown cterm=bold
+hi Identifier term=underline ctermfg=3 guifg=DarkCyan gui=bold
 
 hi! def link cLabel	    	Statement
 hi! def link cConditional   Statement
