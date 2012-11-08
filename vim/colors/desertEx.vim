@@ -54,7 +54,8 @@ highlight Comment guifg=palegreen3 gui=NONE ctermfg=114 cterm=NONE
 highlight Constant guifg=salmon gui=NONE ctermfg=210 cterm=NONE
 highlight Identifier guifg=skyblue gui=NONE ctermfg=117 cterm=NONE
 highlight Function guifg=skyblue gui=NONE ctermfg=117 cterm=NONE
-highlight Statement guifg=lightgoldenrod2 gui=bold ctermfg=186 cterm=bold
+"highlight Statement guifg=lightgoldenrod2 gui=bold ctermfg=186 cterm=bold
+highlight Statement term=bold cterm=bold ctermfg=29 gui=bold guifg=seagreen
 highlight PreProc guifg=palevioletred2 gui=NONE ctermfg=211 cterm=NONE
 highlight Type guifg=tan1 gui=bold ctermfg=215 cterm=bold
 highlight Special guifg=aquamarine2 gui=NONE ctermfg=122 cterm=NONE
