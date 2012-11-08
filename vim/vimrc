@@ -76,6 +76,7 @@ hi normal guibg=#CAE8F0
 "set foldlevel=3
 
 "colorscheme habilight 
+colorscheme default
 let NERDTreeWinPos = "right"
 
 "=> cscope set
@@ -144,8 +145,8 @@ map <C-l> <C-w>l
 "=> normal set
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "move
-nmap <M-k> 3<C-e>
-nmap <M-j> 3<C-y>
+nmap <M-j> 3<C-e>
+nmap <M-k> 3<C-y>
 "copy and paste
 vmap <M-c> "+y
 nmap <M-v> "+p
