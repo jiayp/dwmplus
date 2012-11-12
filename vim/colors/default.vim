@@ -1,24 +1,14 @@
 " Vim color file
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last Change:	2001 Jul 23
+" Maintainer:   Li Jingyu <lijingyu1985@gmail.com>   
+" Last Change:  9 December 2012
 
-" This is the default color scheme.  It doesn't define the Normal
-" highlighting, it uses whatever the colors used to be.
 
-" Set 'background' back to the default.  The value can't always be estimated
-" and is then guessed.
-hi clear Normal
-set bg&
-
-" Remove all existing highlighting and set the defaults.
 hi clear
-
-" Load the syntax highlighting defaults, if it's enabled.
 if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name = "default"
+let g:colors_name = "green-light"
 hi Comment  term=bold ctermfg=5 guifg=SlateBlue
 hi Keyword term=standout ctermfg=4 guifg=Brown    
 hi Normal guibg=#CAE8F0 guifg=Black
@@ -30,7 +20,6 @@ hi! def link cLabel	    	Statement
 hi! def link cConditional   Statement
 hi! def link cRepeat		Statement
 hi! def link cStatement     Statement
-" vim: sw=2
 
 hi User1 guifg=white  guibg=black  
 hi User2 guifg=white  guibg=black  

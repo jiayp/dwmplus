@@ -33,7 +33,7 @@ hi User4 guifg=black  guibg=#C8C8C8
 hi User5 guifg=black  guibg=#C8C8C8
 
 "hi Boolean         guifg=#AE81FF
-hi GlobalVariable guifg=#E6C84F gui=bold 
+"hi GlobalVariable gui=NONE "guifg=#E6C84F  gui=NONE
 hi Boolean         guifg=gold4
 "hi Character       guifg=#E6DB74
 "hi Number          guifg=#AE81FF
@@ -41,7 +41,7 @@ hi String          guifg=#F94C87
 "hi Comment  term=bold ctermfg=5 gui=italic guifg=#80A0F9
 hi Comment  term=bold ctermfg=5 gui=italic guifg=#70665E
 "hi Conditional     guifg=#F92672               gui=bold
-hi Constant        guifg=red            "   gui=bold
+hi Constant        guifg=#F94C87           "   gui=bold
 hi Folded     guifg=white guibg=#403D3D 
 "hi Cursor          guifg=#000000 guibg=#F8F8F0 "hi Debug           guifg=#BCA3A3               gui=bold
 hi DefinedName          guifg=#FA7E6A
@@ -59,7 +59,7 @@ hi DefinedName          guifg=#FA7E6A
 "hi FoldColumn      guifg=#465457 guibg=#000000
 "hi Folded          guifg=#465457 guibg=#000000
 "hi Folded          gui=bold,reverse 
-hi Function        guifg=#02c8ff gui=bold
+hi Function        guifg=#02c8ff gui=NONE
 "hi Identifier      guifg=#FD971F
 "hi Ignore          guifg=#808080 guibg=bg
 "hi IncSearch       guifg=#C4BE89 guibg=#000000
@@ -126,6 +126,8 @@ hi Type            guifg=#60FF60 gui=none
 hi VertSplit       guifg=#808080 guibg=#080808 gui=bold
 hi VisualNOS                     guibg=#403D3D
 hi Visual                        guibg=#403D3D
+hi Member          gui=NONE
+hi GlobalVariable   guifg=#E6C84F gui=NONE
 "hi WarningMsg      guifg=#FFFFFF guibg=#333333 gui=bold
 "hi WildMenu        guifg=#66D9EF guibg=#000000
 "
@@ -137,8 +139,10 @@ hi Visual                        guibg=#403D3D
 "   hi LineNr          guifg=#BCBCBC guibg=#3B3A32
 "   hi NonText         guifg=#BCBCBC guibg=#3B3A32
 ""else
-   "hi Normal          guifg=#F8F8F2 guibg=#1B1D1E
-   hi Normal          guifg=white guibg=black
+"   hi Normal          guifg=#F8F8F2 guibg=#1B1D1E
+"   hi Normal          guifg=white guibg=black
+"   hi Normal ctermfg=250 ctermbg=235 guifg=gray guibg=grey17
+   hi Normal ctermfg=252 ctermbg=234 guifg=#e3e0d7 guibg=#242424 
    hi CursorLine                    guibg=#293739
    hi CursorColumn                  guibg=#293739
    hi LineNr          guifg=#BCBCBC guibg=#232526
