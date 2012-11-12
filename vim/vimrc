@@ -151,6 +151,8 @@ nmap <M-k> 3<C-y>
 vmap <M-c> "+y
 nmap <M-v> "+p
 
+nmap <M-e> g_
+nmap <M-a> 0
 "show marks
 nmap <M-1> :marks <CR>
 
@@ -174,7 +176,7 @@ nmap <F5> :MarkClear<CR> :nohlsearch <CR>
 nmap <F6> :TlistClose<CR> :JavaBrowser <CR>
 
 "grep -E 
-nmap <M-e> :Grep <CR>
+nmap <M-s> :Grep <CR>
 nmap <M-q> :ccl <CR>
 nmap <F8> :edit ++ff=dos <CR>
 "=> minibufer set

@@ -33,6 +33,7 @@ hi User4 guifg=black  guibg=#C8C8C8
 hi User5 guifg=black  guibg=#C8C8C8
 
 "hi Boolean         guifg=#AE81FF
+hi GlobalVariable guifg=#E6C84F gui=bold 
 hi Boolean         guifg=gold4
 "hi Character       guifg=#E6DB74
 "hi Number          guifg=#AE81FF
