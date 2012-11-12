@@ -32,6 +32,9 @@ hi User3 guifg=black  guibg=#C8C8C8
 hi User4 guifg=black  guibg=#C8C8C8
 hi User5 guifg=black  guibg=#C8C8C8
 
+hi Pmenu     guibg=DarkGreen	 guifg=white
+hi PmenuSel  guibg=DarkBlue 	 guifg=white
+
 "hi Boolean         guifg=#AE81FF
 "hi GlobalVariable gui=NONE "guifg=#E6C84F  gui=NONE
 hi Boolean         guifg=gold4
