@@ -40,14 +40,16 @@ hi PmenuSel  guibg=DarkBlue 	 guifg=white
 hi Boolean         guifg=gold4
 "hi Character       guifg=#E6DB74
 "hi Number          guifg=#AE81FF
-hi String          guifg=#F94C87
+hi String          term=underline cterm=underline ctermfg=9 guifg=#80a0ff 
 "hi Comment  term=bold ctermfg=5 gui=italic guifg=#80A0F9
 hi Comment  term=bold ctermfg=5 gui=italic guifg=#70665E
 "hi Conditional     guifg=#F92672               gui=bold
 hi Constant        guifg=#F94C87           "   gui=bold
 hi Folded     guifg=white guibg=#403D3D 
 "hi Cursor          guifg=#000000 guibg=#F8F8F0 "hi Debug           guifg=#BCA3A3               gui=bold
-hi DefinedName          guifg=#FA7E6A
+"hi DefinedName          guifg=#FA7E6A
+hi DefinedName 			guifg=#21BC71
+hi EnumerationValue     guifg=#21BC71
 "hi Delimiter       guifg=#8F8F8F
 "hi DiffAdd                       guibg=#13354A
 "hi DiffChange      guifg=#89807D guibg=#4C4745
@@ -123,7 +125,7 @@ hi! def link  FoldColumn   StatusLine
 "
 "hi Typedef         guifg=#66D9EF
 "hi Type            guifg=#66D9EF               gui=none
-hi Type            guifg=#60FF60 gui=none
+hi Type            guifg=#6AA86A gui=bold
 "hi Underlined      guifg=#808080               gui=underline
 "
 hi VertSplit       guifg=#808080 guibg=#080808 gui=bold
