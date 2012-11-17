@@ -62,7 +62,7 @@ set tabstop=4
 set shiftwidth=4
 set guifont=Inconsolata\ Medium\ 11
 "set guifont=Monaco\ Medium\ 9
-"set t_Co=256
+set t_Co=256
 set nowrapscan
 set winaltkeys=no
 set nocompatible
@@ -76,7 +76,7 @@ hi normal guibg=#CAE8F0
 "set foldlevel=3
 
 "colorscheme habilight 
-colorscheme default
+colorscheme ljyat
 let NERDTreeWinPos = "right"
 
 "=> cscope set
