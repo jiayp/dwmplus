@@ -53,6 +53,7 @@ if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
 
+set nocp
 set updatetime=100
 set nu
 "set hlsearch
@@ -60,6 +61,10 @@ set smartindent
 set cindent 
 set tabstop=4
 set shiftwidth=4
+set et
+set smarttab
+set linebreak
+set nobackup
 set guifont=Inconsolata\ Medium\ 11
 "set guifont=Monaco\ Medium\ 9
 set t_Co=256
@@ -156,6 +161,7 @@ nmap <M-a> 0
 "show marks
 nmap <M-2> :marks <CR>
 nmap <M-1> %
+nmap <M-l> :pc<CR> :ccl<CR>
 
 "set encoding
 set fileencodings=utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1,ucs-bom
