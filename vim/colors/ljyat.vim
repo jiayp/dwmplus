@@ -17,11 +17,7 @@ if exists("g:molokai_original")
 else
     let s:molokai_original = 0
 endif
-hi User1 guifg=black  guibg=#C8C8C8
-hi User2 guifg=black  guibg=#C8C8C8
-hi User3 guifg=black  guibg=#C8C8C8
-hi User4 guifg=black  guibg=#C8C8C8
-hi User5 guifg=black  guibg=#C8C8C8
+
 
 hi Pmenu     guibg=DarkGreen	 guifg=white
 hi PmenuSel  guibg=DarkBlue 	 guifg=white
