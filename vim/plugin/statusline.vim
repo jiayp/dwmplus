@@ -24,10 +24,10 @@
 set laststatus=2
 set statusline=
 set statusline+=%-f\ %w\ 
-set statusline+=%{&ff=='unix'?'\\n':(&ff=='mac'?'\\r':'\\r\\n')}\ 
+"set statusline+=%{&ff=='unix'?'\\n':(&ff=='mac'?'\\r':'\\r\\n')}\ 
 set statusline+=%{&fenc!=''?&fenc:&enc}\ 
-set statusline+=%Y\ 
+"set statusline+=%Y\ 
 set statusline+=%04l/%03c\ 
-set statusline+=0x%04.4B\ 
+set statusline+=0x%02.4B\ 
 set statusline+=%-16{strftime(\"%Y-%m-%d\ %H:%M\")}\ 
-set statusline+=%-3m\ 
+set statusline+=%-3m 
