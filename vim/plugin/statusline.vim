@@ -21,33 +21,13 @@
 " Tutorial:
 "         Just use it, and change it.
 "         When you edit it, do not erase trailing-blanks.
-
-"set laststatus=2
-"set statusline=
-"set statusline+=%1*%-52t\ 
-"set statusline+=%2*\ %{&ff=='unix'?'\\n':(&ff=='mac'?'\\r':'\\r\\n')}\ 
-"set statusline+=%3*\ %{&fenc!=''?&fenc:&enc}\ 
-"set statusline+=%1*\ %Y\ 
-"set statusline+=%4*\ %04l/%03c\ 
-"set statusline+=%2*\ 0x%04.4B\ 
-"set statusline+=%1*\ %-16{strftime(\"%Y-%m-%d\ %H:%M\")}\ 
-"set statusline+=%5*\ %-3m\ 
-
-"hi User1 guifg=#112605  guibg=#aefe7B gui=italic
-"hi User2 guifg=#391100  guibg=#d3905c gui=italic
-"hi User3 guifg=#292b00  guibg=#f4f597 gui=italic
-"hi User4 guifg=#051d00  guibg=#7dcc7d gui=italic
-"hi User5 guifg=#002600  guibg=#67ab6e gui=italic
-
 set laststatus=2
 set statusline=
-set statusline+=%1*%-f\ %w\ 
-set statusline+=%1*\ %{&ff=='unix'?'\\n':(&ff=='mac'?'\\r':'\\r\\n')}\ 
-set statusline+=%1*\ %{&fenc!=''?&fenc:&enc}\ 
-set statusline+=%1*\ %Y\ 
-set statusline+=%1*\ %04l/%03c\ 
-set statusline+=%1*\ 0x%04.4B\ 
-set statusline+=%1*\ %-16{strftime(\"%Y-%m-%d\ %H:%M\")}\ 
-set statusline+=%1*\ %-3m\ 
-
-hi User1 guifg=white  guibg=black  
+set statusline+=%-f\ %w\ 
+set statusline+=%{&ff=='unix'?'\\n':(&ff=='mac'?'\\r':'\\r\\n')}\ 
+set statusline+=%{&fenc!=''?&fenc:&enc}\ 
+set statusline+=%Y\ 
+set statusline+=%04l/%03c\ 
+set statusline+=0x%04.4B\ 
+set statusline+=%-16{strftime(\"%Y-%m-%d\ %H:%M\")}\ 
+set statusline+=%-3m\ 
