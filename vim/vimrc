@@ -56,6 +56,7 @@ endif
 set nocp
 set updatetime=100
 set nu
+set mousefocus
 "set hlsearch
 set smartindent
 set cindent 
@@ -73,7 +74,6 @@ set winaltkeys=no
 set nocompatible
 set guioptions-=m
 set guioptions-=T
-hi normal guibg=#CAE8F0
 
 "set fold
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
