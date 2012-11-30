@@ -27,6 +27,7 @@ hi String          term=underline cterm=underline ctermfg=9 guifg=#80a0ff
 hi Comment    	   term=bold ctermfg=5 gui=italic guifg=#70665E
 hi Constant        guifg=#F94C87           "   gui=bold
 hi Folded          guifg=white guibg=#403D3D 
+hi FoldColumn      guifg=white guibg=#403D3D 
 hi Statement       term=bold ctermfg=14 gui=bold guifg=#86C711
 "hi DefinedName 	   term=underline ctermfg=9 guifg=#ff80ff 
 "hi EnumerationValue     guifg=#21BC71
@@ -53,4 +54,5 @@ hi! def link cLabel	    	Statement
 hi! def link cConditional   Statement
 hi! def link cRepeat		Statement
 hi! def link cStatement     Statement
+hi! def link TagListFileName StatusLine 
 
