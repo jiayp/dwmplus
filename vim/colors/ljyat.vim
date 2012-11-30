@@ -53,5 +53,4 @@ hi! def link cLabel	    	Statement
 hi! def link cConditional   Statement
 hi! def link cRepeat		Statement
 hi! def link cStatement     Statement
-hi! def link FoldColumn     StatusLine
 
