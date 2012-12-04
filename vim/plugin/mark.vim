@@ -211,6 +211,7 @@ function! s:DefaultHighlightings()
 		let l:palette = g:mwDefaultHighlightingPalette
 	elseif g:mwDefaultHighlightingPalette ==# 'original'
 		let l:palette = [
+		\   { 'ctermbg':'DarkGreen',  'ctermfg':'Black', 'guibg':'DarkGreen', 'guifg':'white' },
 		\   { 'ctermbg':'Cyan',       'ctermfg':'Black', 'guibg':'#8CCBEA', 'guifg':'Black' },
 		\   { 'ctermbg':'Green',      'ctermfg':'Black', 'guibg':'#A4E57E', 'guifg':'Black' },
 		\   { 'ctermbg':'DarkMagenta','ctermfg':'Black', 'guibg':'#A29CCF', 'guifg':'#120080' },
