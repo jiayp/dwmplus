@@ -26,7 +26,7 @@ function csseta()
 	echo "create cscope.files in $@"
 	for arg in $@
 	do
-		find ${arg}  -type f >> cscope.files
+		find ${arg}  -type f | sed '/\/\.\| /d'  >> cscope.files
 	done
 
 	echo "create cscope"
