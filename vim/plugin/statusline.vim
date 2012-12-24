@@ -27,7 +27,7 @@ set statusline+=%-f\ %w\
 "set statusline+=%{&ff=='unix'?'\\n':(&ff=='mac'?'\\r':'\\r\\n')}\ 
 set statusline+=%{&fenc!=''?&fenc:&enc}\ 
 "set statusline+=%Y\ 
-set statusline+=line:%l/%L\ col:%03c\ 
+set statusline+=line:%l/%L\ col:%c\ 
 set statusline+=ascii:0x%02.4B\ 
 "set statusline+=%-16{strftime(\"%Y-%m-%d\ %H:%M\")}\ 
 set statusline+=%-3m 
