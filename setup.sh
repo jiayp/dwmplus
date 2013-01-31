@@ -23,21 +23,18 @@ function csset()
 function csseta()
 {
 	rm  -rf cscope.* tags TAGS  
-	echo "create cscope.files in $@"
+
+    csset $@
+
+    rm  -rf cscope.files tags TAGS
 	for arg in $@
 	do
-		find ${arg}  -type f | sed '/\/\.\| /d'  >> cscope.files
+		find ${arg}  -type f | sed '/\/\.\| \|\.o\|\.taghl\|cscope/d'  >> cscope.files
 	done
-
-	echo "create cscope"
-	#cscope -bkqi cscope.files
-	cscope -bki cscope.files
 
 	echo "create tags"
 	ctags --c++-kinds=+px --fields=+iaS --extra=+q  -L cscope.files
-#	echo "create TAGS"
-#	etags -L cscope.files
-#	cat cscope.files|etags -
+
 	echo "create  success"
 }
 
