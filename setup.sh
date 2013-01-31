@@ -1,32 +1,46 @@
 #!/bin/bash
-function csset()
+
+function creat_cscope()
 {
-	csclean 
 	echo "create cscope.files in $@"
 	for arg in $@
 	do
 		find ${arg} -type f -name "*.[chmSs]" -o -name "*.java" -o -name "*.cpp" \
-		      	-o -name "*.hp" -o -name "*.cc"  >> cscope.files
+		      	-o -name "*.hp" -o -name "*.cc" -o -name "*.def"  >> cscope.files
 	done
 
 	echo "create cscope"
-#cscope -bkqi cscope.files
-	 cscope -bki cscope.files
+    cscope -bki cscope.files
+}
+
+function csset()
+{
+	if [ $# -eq 0 ];then
+        echo "need dirname"
+        return
+    fi
+
+	csclean 
+    creat_cscope $@
 
 	echo "create tags"
 	ctags --c++-kinds=+px --fields=+iaS --extra=+q  -L cscope.files
-#	echo "create TAGS"
-#	cat cscope.files|etags -
+
 	echo "create  success"
 }
 
 function csseta()
 {
-	rm  -rf cscope.* tags TAGS  
+	if [ $# -eq 0 ];then
+        echo "need dirname"
+        return 
+    fi
 
-    csset $@
+    csclean
+    creat_cscope $@
 
     rm  -rf cscope.files tags TAGS
+
 	for arg in $@
 	do
 		find ${arg}  -type f | sed '/\/\.\| \|\.o\|\.taghl\|cscope/d'  >> cscope.files
