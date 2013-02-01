@@ -75,6 +75,7 @@ set nocompatible
 set guioptions-=m
 set guioptions-=T
 
+set diffopt=filler,vertical
 "set fold
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "set foldmethod=manual
@@ -100,7 +101,8 @@ if has("cscope")
 	endif
 	set csverb
 endif
-function! Reload_cs()
+
+function! CscopeReload_cs()
 	if has("cscope")
 		set nocscopeverbose
 		cs kill -1
@@ -109,21 +111,22 @@ function! Reload_cs()
 		set cscopeverbose
 	endif
 endfunction
-command! R call Reload_cs()
+command! R call CscopeReload_cs()
 
+function! CscopeFindFile()
+    echohl Question
+    let pattern = input("Search for file pattern: ")
+	echohl None
 
-function! CscopeFile()
 	let tmpfile = '~/.gvim.tmp' . getpid() 
-    let pattern = input("Search for file pattern: ", expand("<cword>"))
 	let real_cmd = '!grep  -E ' . pattern . ' cscope.files  > '  . tmpfile
 	execute "silent! " real_cmd
     
     let ef = &errorformat 
-
     set efm=%f
 
     if v:version >= 700 
-        execute "silent! caddfile " . tmpfile
+        execute "silent! cgetfile " . tmpfile
     else
         if exists(":cgetfile")
             execute "silent! cgetfile " . tmpfile
@@ -140,9 +143,10 @@ function! CscopeFile()
 
     let &errorformat = ef 
     execute "silent! !rm -rf " . tmpfile
-
 endfunction
-command! F call CscopeFile()
+command! CscopeFindFile call CscopeFindFile()
+
+nmap <M-f> :CscopeFindFile <CR>
 
 "
 "function! LoadCscope()
@@ -172,7 +176,6 @@ nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 nmap <M-[> :cs find c <C-R>=expand("<cword>")<CR><CR>
 nmap <M-\> :cs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <M-t> :cs f t 
-nmap <M-f> :cs f f 
 "=> switch windows
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <C-j> <C-w>j
