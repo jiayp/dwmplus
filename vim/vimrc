@@ -110,6 +110,40 @@ function! Reload_cs()
 	endif
 endfunction
 command! R call Reload_cs()
+
+
+function! CscopeFile()
+	let tmpfile = '~/.gvim.tmp' . getpid() 
+    let pattern = input("Search for file pattern: ", expand("<cword>"))
+	let real_cmd = '!grep  -E ' . pattern . ' cscope.files  > '  . tmpfile
+	execute "silent! " real_cmd
+    
+    let ef = &errorformat 
+
+    set efm=%f
+
+    if v:version >= 700 
+        execute "silent! caddfile " . tmpfile
+    else
+        if exists(":cgetfile")
+            execute "silent! cgetfile " . tmpfile
+        else
+            execute "silent! cfile " . tmpfile
+        endif
+    endif
+
+    " Open the grep output window
+    if g:Grep_OpenQuickfixWindow == 1
+        " Open the quickfix window below the current window
+        belowright copen
+    endif
+
+    let &errorformat = ef 
+    execute "silent! !rm -rf " . tmpfile
+
+endfunction
+command! F call CscopeFile()
+
 "
 "function! LoadCscope()
 "	let db = findfile("cscope.out", ".;")
