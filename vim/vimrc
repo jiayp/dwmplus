@@ -122,7 +122,7 @@ function! CscopeSearchPattern()
     endif
 
     echohl Question
-    let pattern = input("Search for pattern: ")
+    let pattern = input("Search string for pattern: ", expand("<cword>"))
 	echohl None
 
     if pattern == ""
@@ -159,7 +159,7 @@ function! CscopeFindFile()
     endif
 
     echohl Question
-    let pattern = input("Search for file pattern: ")
+    let pattern = input("Search file for pattern: ")
 	echohl None
 
     if pattern == ""
