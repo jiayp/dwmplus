@@ -113,7 +113,54 @@ function! CscopeReload_cs()
 endfunction
 command! R call CscopeReload_cs()
 
+function! CscopeSearchPattern()
+    if !filereadable('cscope.files')
+        echohl Special
+        echo "   cscope.files not exist"
+        echohl None
+        return
+    endif
+
+    echohl Question
+    let pattern = input("Search for pattern: ")
+	echohl None
+
+    if pattern == ""
+        return 
+    endif
+    
+	let tmpfile = '~/.gvim.tmp' . getpid() 
+	let real_cmd = '!grep -n -E ' . a:pattern . ' `cat cscope.files` > ' . tmpfile
+	execute "silent! " real_cmd
+    
+    if v:version >= 700 
+        execute "silent! cgetfile " . tmpfile
+    else
+        if exists(":cgetfile")
+            execute "silent! cgetfile " . tmpfile
+        else
+            execute "silent! cfile " . tmpfile
+        endif
+    endif
+
+    " Open the grep output window
+    if g:Grep_OpenQuickfixWindow == 1
+        " Open the quickfix window below the current window
+        belowright copen
+    endif
+
+    execute "silent! !rm -rf " . tmpfile
+endfunction
+command! CscopeSearchPattern call CscopeSearchPattern()
+
 function! CscopeFindFile()
+    if !filereadable('cscope.files')
+        echohl Special
+        echo "   cscope.files not exist"
+        echohl None
+        return
+    endif
+
     echohl Question
     let pattern = input("Search for file pattern: ")
 	echohl None
@@ -121,6 +168,7 @@ function! CscopeFindFile()
     if pattern == ""
         return 
     endif
+    
 	let tmpfile = '~/.gvim.tmp' . getpid() 
 	let real_cmd = '!grep  -E ' . pattern . ' cscope.files  > '  . tmpfile
 	execute "silent! " real_cmd
@@ -223,7 +271,7 @@ nmap <F5> :MarkClear<CR> :nohlsearch <CR>
 nmap <F6> :TlistClose<CR> :JavaBrowser <CR>
 
 "grep -E 
-nmap <M-s> :Grep <CR>
+nmap <M-s> :CscopeSearchPattern<CR>
 nmap <M-q> :ccl <CR>
 nmap <F8> :edit ++ff=dos <CR>
 "=> minibufer set
