@@ -130,7 +130,7 @@ function! CscopeSearchPattern()
     endif
     
 	let tmpfile = '~/.gvim.tmp' . getpid() 
-	let real_cmd = '!grep -n -E ' . a:pattern . ' `cat cscope.files` > ' . tmpfile
+	let real_cmd = '!grep -n -E ' . pattern . ' `cat cscope.files` > ' . tmpfile
 	execute "silent! " real_cmd
     
     if v:version >= 700 
@@ -143,11 +143,8 @@ function! CscopeSearchPattern()
         endif
     endif
 
-    " Open the grep output window
-    if g:Grep_OpenQuickfixWindow == 1
-        " Open the quickfix window below the current window
-        belowright copen
-    endif
+    " Open the quickfix window below the current window
+    belowright copen
 
     execute "silent! !rm -rf " . tmpfile
 endfunction
@@ -186,11 +183,8 @@ function! CscopeFindFile()
         endif
     endif
 
-    " Open the grep output window
-    if g:Grep_OpenQuickfixWindow == 1
-        " Open the quickfix window below the current window
-        belowright copen
-    endif
+    " Open the quickfix window below the current window
+    belowright copen
 
     let &errorformat = ef 
     execute "silent! !rm -rf " . tmpfile
