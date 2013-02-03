@@ -56,7 +56,7 @@ endif
 set nocp
 set updatetime=100
 set nu
-set mousefocus
+"set mousefocus
 "set hlsearch
 set smartindent
 set cindent 
