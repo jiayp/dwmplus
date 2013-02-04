@@ -68,8 +68,10 @@ static const Rule rules[] = {
   { "Pidgin",        NULL,    NULL,       0,           True,        -1 },
   { "Thunderbird",   NULL,    NULL,       1<<4,        True,        -1 },
   { "Gimp",          NULL,    NULL,       0,           True,        -1 },
+  { "Emacs",          NULL,    NULL,       0,           True,        -1 },
   { "Iptux",         NULL,    NULL,       0,           True,        -1 },
   { "Amsn",         NULL,    NULL,       0,            True,        -1 },
+  { "Wine",         NULL,    NULL,       0,            True,        -1 },
 
 };
 
@@ -105,7 +107,7 @@ static const char *xkill[]    = { "xkill", NULL };
 static const char *termcmd[]  = { "terminal", NULL };
 static const char *stardict[]  = { "stardict", NULL };
 static const char *lockscreencmd[]  = { "slock", NULL };
-static const char *browsercmd[]     = { "opera", NULL };
+static const char *browsercmd[]     = { "google-chrome", NULL };
 static const char *browseraltcmd[]  = { "firefox", NULL };
 static const char *mailcmd[]        = { "thunderbird", NULL };
 static const char *filemgrcmd[]     = { "xfe", NULL };
