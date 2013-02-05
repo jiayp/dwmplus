@@ -267,7 +267,7 @@ nmap <F5> :MarkClear<CR> :nohlsearch <CR>
 nmap <F6> :TlistClose<CR> :JavaBrowser <CR>
 
 "grep -E 
-nmap <M-s> :CscopeSearchPattern<CR>
+nmap <M-s> :CscopeSearchStringPattern<CR>
 nmap <M-q> :ccl <CR>
 nmap <F8> :edit ++ff=dos <CR>
 "=> minibufer set
