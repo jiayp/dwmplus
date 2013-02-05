@@ -2,6 +2,7 @@
 
 function creat_cscope()
 {
+	csclean $@
 	echo "create cscope.files in $@"
 	for arg in $@
 	do
@@ -20,7 +21,6 @@ function csset()
         return
     fi
 
-	csclean 
     creat_cscope $@
 
 	echo "create tags"
@@ -36,7 +36,6 @@ function csseta()
         return 
     fi
 
-    csclean
     creat_cscope $@
 
     rm  -rf cscope.files tags TAGS
@@ -56,7 +55,7 @@ function csseta()
 function csclean()
 {
 	if [ $# -eq 0 ];then
-		rm  -rf cscope* tags TAGS 
+		rm  -rf cscope* tags TAGS
 	else
 		for arg in $@
 		do
