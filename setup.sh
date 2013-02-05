@@ -54,14 +54,15 @@ function csseta()
 
 function csclean()
 {
-	if [ $# -eq 0 ];then
-		rm  -rf cscope* tags TAGS
-	else
-		for arg in $@
-		do
-			find $arg  -type f -name "cscope.*" -o -name tags |xargs rm -rf
-		done
-	fi
+    rm  -rf cscope* tags TAGS
+#	if [ $# -eq 0 ];then
+#		rm  -rf cscope* tags TAGS
+#	else
+#		for arg in $@
+#		do
+#			find $arg  -type f -name "cscope.*" -o -name tags |xargs rm -rf
+#		done
+#	fi
 }
 function cscleana()
 {
