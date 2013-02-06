@@ -193,6 +193,33 @@ function! CscopeFindFilePattern()
 endfunction
 command! CscopeFindFilePattern call CscopeFindFilePattern()
 
+function! SearchStringCurrentBuffer()
+    let curfilename = expand("%")
+    if curfilename == ""
+        echohl Special
+        echo "   buffer name is NULL"
+        echohl None
+        return
+    endif
+
+    echohl Question
+    let pattern = input("  Search string cur buffer: ", expand("<cword>"))
+	echohl None
+
+    if pattern == ""
+        return 
+    endif
+
+    let pattern = "/" . pattern . "/" 
+    let real_cmd = "vimgrep " . pattern . " %"
+    execute "silent! " real_cmd
+    
+    " Open the quickfix window below the current window
+    belowright copen
+endfunction
+command! SearchStringCurrentBuffer call SearchStringCurrentBuffer()
+
+nmap <C-s> :SearchStringCurrentBuffer <CR>
 nmap <M-f> :CscopeFindFilePattern <CR>
 
 "
