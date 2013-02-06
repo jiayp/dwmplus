@@ -142,7 +142,7 @@ function! CscopeSearchStringPattern()
     let pattern = "'" . pattern . "'" 
     let tmpfile = '~/.gvim.tmp' . getpid() 
     let real_cmd = '!grep -n -E ' . pattern . ' `cat cscope.files` > ' . tmpfile
-    execute "silent! " real_cmd
+    execute "silent! " . real_cmd
     
     if v:version >= 700 
         execute "silent! cgetfile " . tmpfile
