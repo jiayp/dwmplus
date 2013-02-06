@@ -2,78 +2,82 @@
 
 function creat_cscope()
 {
-	csclean $@
-	echo "create cscope.files in $@"
-	for arg in $@
-	do
-		find ${arg} -type f -name "*.[chmSs]" -o -name "*.java" -o -name "*.cpp" \
-		      	-o -name "*.hp" -o -name "*.cc" -o -name "*.def"  >> cscope.files
-	done
+    if [ -e "cscope.files" ]; then
+        rm -rf cscope.files
+    fi
 
-	echo "create cscope"
+    echo "create cscope.files in $@"
+    for arg in $@
+    do
+        find ${arg} -type f -name "*.[chmSs]" -o -name "*.java" -o -name "*.cpp" \
+            -o -name "*.hp" -o -name "*.cc" -o -name "*.def"  >> cscope.files
+    done
+
+    echo "create cscope"
     cscope -bki cscope.files
 }
 
 function csset()
 {
-	if [ $# -eq 0 ];then
+    if [ $# -eq 0 ];then
         echo "need dirname"
         return
     fi
 
+    csclean 
     creat_cscope $@
 
-	echo "create tags"
-	ctags --c++-kinds=+px --fields=+iaS --extra=+q  -L cscope.files
+    echo "create tags"
+    ctags --c++-kinds=+px --fields=+iaS --extra=+q  -L cscope.files
 
-	echo "create  success"
+    echo "create  success"
 }
 
 function csseta()
 {
-	if [ $# -eq 0 ];then
+    if [ $# -eq 0 ];then
         echo "need dirname"
         return 
     fi
 
+    csclean
     creat_cscope $@
 
     rm  -rf cscope.files tags TAGS
 
-	for arg in $@
-	do
-		find ${arg}  -type f | sed '/\/\.\| \|\.o\|\.taghl\|cscope/d'  >> cscope.files
-	done
+    for arg in $@
+    do
+        find ${arg}  -type f | sed '/\/\.\| \|\.o\|\.taghl\|cscope/d'  >> cscope.files
+    done
 
-	echo "create tags"
-	ctags --c++-kinds=+px --fields=+iaS --extra=+q  -L cscope.files
+    echo "create tags"
+    ctags --c++-kinds=+px --fields=+iaS --extra=+q  -L cscope.files
 
-	echo "create  success"
+    echo "create  success"
 }
 
 
 function csclean()
 {
-    rm  -rf cscope* tags TAGS
-#	if [ $# -eq 0 ];then
-#		rm  -rf cscope* tags TAGS
-#	else
-#		for arg in $@
-#		do
-#			find $arg  -type f -name "cscope.*" -o -name tags |xargs rm -rf
-#		done
-#	fi
+    if [ $# -eq 0 ];then
+        rm  -rf cscope* tags TAGS 
+    else
+        for arg in $@
+        do
+            find $arg  -type f -name "cscope.*" -o -name tags |xargs rm -rf
+        done
+    fi
 }
 function cscleana()
 {
-	if [ $# -eq 0 ];then
-		rm  -rf cscope* tags TAGS *.taghl 
-	else
-		for arg in $@
-		do
-			find $arg  -type f -name "cscope.*" -o -name tags -o  -name "*.taghl" -o -name TAGS |xargs rm -rf
-		done
-	fi
+    if [ $# -eq 0 ];then
+        rm  -rf cscope* tags TAGS *.taghl 
+    else
+        for arg in $@
+        do
+            find $arg  -type f -name "cscope.*" -o -name tags -o  -name "*.taghl" -o -name TAGS |xargs rm -rf
+        done
+    fi
 }
 
 function ll()
