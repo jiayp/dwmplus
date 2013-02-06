@@ -180,7 +180,7 @@ function! CscopeFindFilePattern()
     let pattern = "'" . pattern . "'" 
     let tmpfile = '~/.gvim.tmp' . getpid() 
     let real_cmd = '!grep  -E ' . pattern . ' cscope.files  > '  . tmpfile
-    execute "silent! " real_cmd
+    execute "silent! " . real_cmd
 
     let ef = &errorformat 
     set efm=%f
@@ -222,7 +222,7 @@ function! SearchStringCurrentBuffer()
 
     let pattern = "/" . pattern . "/" 
     let real_cmd = "vimgrep " . pattern . " %"
-    execute "silent! " real_cmd
+    execute "silent! " . real_cmd
     
     " Open the quickfix window below the current window
     belowright copen
