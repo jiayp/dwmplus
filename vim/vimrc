@@ -72,8 +72,6 @@ set t_Co=256
 set nowrapscan
 set winaltkeys=no
 set nocompatible
-set guioptions-=m
-set guioptions-=T
 
 set diffopt=filler,vertical
 "set fold
@@ -82,7 +80,19 @@ set diffopt=filler,vertical
 "set foldlevel=3
 
 "colorscheme habilight 
-colorscheme ljyat
+if has("win32")
+"not set colorscheme in windows
+else
+    if has("gui_running")
+        colorscheme ljyat
+    else
+        colorscheme desert
+    endif
+
+    set guioptions-=m
+    set guioptions-=T
+endif
+
 let NERDTreeWinPos = "right"
 
 "=> cscope set
