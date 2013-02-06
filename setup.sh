@@ -47,7 +47,7 @@ function csseta()
 
     for arg in $@
     do
-        find ${arg}  -type f | sed '/\/\.\| \|\.o\|\.taghl\|cscope/d'  >> cscope.files
+        find ${arg}  -type f | sed '/\/\.\| \|\.o\|\.taghl\|cscope\|\.a/d'  >> cscope.files
     done
 
     echo "create tags"
@@ -60,7 +60,7 @@ function csseta()
 function csclean()
 {
     if [ $# -eq 0 ];then
-        rm  -rf cscope* tags TAGS 
+        rm  -rf cscope* tags TAGS ncscope* 
     else
         for arg in $@
         do
