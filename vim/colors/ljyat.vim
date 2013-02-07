@@ -52,6 +52,7 @@ hi LineNr          guifg=#BCBCBC guibg=#232526
 hi NonText         guifg=#BCBCBC guibg=#232526
 hi StatusLine      guifg=black   guibg=#C2BFA5 gui=bold
 hi Search          term=reverse  ctermfg=0 ctermbg=242 guifg=white guibg=DarkBlue
+hi MyTagListTagName  guifg=black guibg=yellow
 
 hi! def link cLabel	    	Statement
 hi! def link cConditional   Statement
