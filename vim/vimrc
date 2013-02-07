@@ -92,6 +92,8 @@ else
     set guioptions-=m
     set guioptions-=T
 endif
+"MyTagListTagName must set after set colorscheme
+hi  MyTagListTagName guibg=yellow guifg=black
 
 let NERDTreeWinPos = "right"
 
