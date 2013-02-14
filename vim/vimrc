@@ -85,8 +85,6 @@ if has("win32")
 else
     if has("gui_running")
         colorscheme ljyat
-    else
-        colorscheme desert
     endif
 
     set guioptions-=m
