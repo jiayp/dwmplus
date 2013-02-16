@@ -91,7 +91,7 @@ else
     set guioptions-=T
 endif
 
-"let NERDTreeWinPos = "right"
+let NERDTreeWinPos = "right"
 
 "=> cscope set
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -101,7 +101,7 @@ if has("cscope")
 	set cst
 	set nocsverb
 	" add any database in current directory
-	if filereadable('cscope.out')
+	if filereadable("cscope.out")
 	    cs add cscope.out
 	" else add database pointed to by environment
 	elseif $CSCOPE_DB != ""
@@ -122,7 +122,7 @@ endfunction
 command! R call CscopeReload_cs()
 
 function! CscopeSearchStringPattern()
-    if !filereadable('cscope.files')
+    if !filereadable("cscope.files")
         echohl Special
         echo "   cscope.files not exist"
         echohl None
@@ -162,7 +162,7 @@ endfunction
 command! CscopeSearchStringPattern call CscopeSearchStringPattern()
 
 function! CscopeFindFilePattern()
-    if !filereadable('cscope.files')
+    if !filereadable("cscope.files")
         echohl Special
         echo "   cscope.files not exist"
         echohl None
@@ -298,18 +298,6 @@ imap <M-h> <Left>
 imap <M-l> <Right>
 
 nmap <F2> :Tlist<CR>
-
-let g:NERDTree_title="[NERDTree]"  
-let g:winManagerWindowLayout="NERDTree|TagList"  
-  
-function! NERDTree_Start()  
-    exec 'NERDTree'  
-endfunction  
-  
-function! NERDTree_IsValid()  
-    return 1  
-endfunction  
-
 nmap <M-LeftMouse> <LeftMouse><leader>m
 nmap <RightMouse> <C-o>
 nmap <S-LeftMouse> <LeftMouse>:nohlsearch<CR>:MarkClear<CR><leader>m
