@@ -137,6 +137,8 @@ function! CscopeSearchStringPattern()
         return 
     endif
 
+    execute "silent! Mark " . pattern 
+
     let pattern = "'" . pattern . "'" 
     let tmpfile = '~/.gvim.tmp' . getpid() 
     let real_cmd = '!grep -n -E ' . pattern . ' `cat cscope.files` > ' . tmpfile
@@ -217,6 +219,8 @@ function! SearchStringCurrentBuffer()
     if pattern == ""
         return 
     endif
+
+    execute "silent! Mark " . pattern 
 
     let pattern = "/" . pattern . "/" 
     let real_cmd = "vimgrep " . pattern . " %"
