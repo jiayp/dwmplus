@@ -155,7 +155,15 @@ function! CscopeSearchStringPattern()
     endif
 
     " Open the quickfix window below the current window
-    belowright copen
+    if exists("t:NERDTreeBufName")
+        if bufwinnr(t:NERDTreeBufName) != -1
+            botright copen
+        else
+            belowright copen
+        endif
+    else
+        belowright copen
+    endif 
 
     execute "silent! !rm -rf " . tmpfile
 endfunction
@@ -196,7 +204,15 @@ function! CscopeFindFilePattern()
     endif
 
     " Open the quickfix window below the current window
-    belowright copen
+    if exists("t:NERDTreeBufName")
+        if bufwinnr(t:NERDTreeBufName) != -1
+            botright copen
+        else
+            belowright copen
+        endif
+    else
+        belowright copen
+    endif 
 
     let &errorformat = ef 
     execute "silent! !rm -rf " . tmpfile
@@ -227,7 +243,16 @@ function! SearchStringCurrentBuffer()
     execute "silent! " . real_cmd
     
     " Open the quickfix window below the current window
-    belowright copen
+    if exists("t:NERDTreeBufName")
+        if bufwinnr(t:NERDTreeBufName) != -1
+            botright copen
+        else
+            belowright copen
+        endif
+    else
+        belowright copen
+    endif 
+
 endfunction
 command! SearchStringCurrentBuffer call SearchStringCurrentBuffer()
 
