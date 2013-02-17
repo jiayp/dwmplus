@@ -51,7 +51,7 @@ hi CursorColumn                  guibg=#293739
 hi LineNr          guifg=#BCBCBC guibg=#232526
 hi NonText         guifg=#BCBCBC guibg=#232526
 hi StatusLine      guifg=black   guibg=#C2BFA5 gui=bold
-hi Search          guifg=white guibg=DarkGreen
+hi Search          guifg=green guibg=black
 
 hi! def link cLabel	    	Statement
 hi! def link cConditional   Statement
