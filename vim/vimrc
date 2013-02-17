@@ -92,6 +92,12 @@ else
 endif
 
 let NERDTreeWinPos = "right"
+function! NERDTreeOpenBufDir()
+    let l:bufname = bufname("%")
+    execute "silent! NERDTree " . l:bufname
+endfunction
+command! NERDTreeOpenBufDir call NERDTreeOpenBufDir ()
+nmap <F3> :NERDTreeOpenBufDir<CR>
 
 "=> cscope set
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -345,7 +351,6 @@ let g:miniBufExplModSelTarget = 1
 let g:miniBufExplUseSingleClick = 1
 let g:miniBufExplMaxSize = 40
 let g:miniBufExplMinSize = 25
-nmap <F3> :TMiniBufExplorer <CR>
 
 """"minibufer set end"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
