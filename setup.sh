@@ -9,8 +9,7 @@ function creat_cscope()
     echo "create cscope.files in $@"
     for arg in $@
     do
-        find ${arg} -type f -name "*.[chmSs]" -o -name "*.java" -o -name "*.cpp" \
-            -o -name "*.hp" -o -name "*.cc" -o -name "*.def"  >> cscope.files
+        find  ${arg}  -type f |sed  -e '/ /d' -n -e '/\.\(\([chmSs]\)\|\(java\)\|\(cpp\)\|\(hp\)\|\(cc\)\|\(def\)\)$/p' >> cscope.files
     done
 
     echo "create cscope"
