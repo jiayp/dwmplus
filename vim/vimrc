@@ -151,25 +151,17 @@ function! CscopeSearchStringPattern()
     execute "silent! " . real_cmd
     
     if v:version >= 700 
-        execute "silent! cgetfile " . tmpfile
+        execute "silent! lgetfile " . tmpfile
     else
-        if exists(":cgetfile")
-            execute "silent! cgetfile " . tmpfile
+        if exists(":lgetfile")
+            execute "silent! lgetfile " . tmpfile
         else
-            execute "silent! cfile " . tmpfile
+            execute "silent! lfile " . tmpfile
         endif
     endif
 
     " Open the quickfix window below the current window
-    if exists("t:NERDTreeBufName")
-        if bufwinnr(t:NERDTreeBufName) != -1
-            botright copen
-        else
-            belowright copen
-        endif
-    else
-        belowright copen
-    endif 
+    lopen
 
     execute "silent! !rm -rf " . tmpfile
 endfunction
@@ -200,25 +192,17 @@ function! CscopeFindFilePattern()
     set efm=%f
 
     if v:version >= 700 
-        execute "silent! cgetfile " . tmpfile
+        execute "silent! lgetfile " . tmpfile
     else
-        if exists(":cgetfile")
-            execute "silent! cgetfile " . tmpfile
+        if exists(":lgetfile")
+            execute "silent! lgetfile " . tmpfile
         else
-            execute "silent! cfile " . tmpfile
+            execute "silent! lfile " . tmpfile
         endif
     endif
 
     " Open the quickfix window below the current window
-    if exists("t:NERDTreeBufName")
-        if bufwinnr(t:NERDTreeBufName) != -1
-            botright copen
-        else
-            belowright copen
-        endif
-    else
-        belowright copen
-    endif 
+    lopen
 
     let &errorformat = ef 
     execute "silent! !rm -rf " . tmpfile
@@ -245,19 +229,11 @@ function! SearchStringCurrentBuffer()
     execute "silent! Mark " . pattern 
 
     let pattern = "/" . pattern . "/" 
-    let real_cmd = "vimgrep " . pattern . " %"
+    let real_cmd = "lvimgrep " . pattern . " %"
     execute "silent! " . real_cmd
     
     " Open the quickfix window below the current window
-    if exists("t:NERDTreeBufName")
-        if bufwinnr(t:NERDTreeBufName) != -1
-            botright copen
-        else
-            belowright copen
-        endif
-    else
-        belowright copen
-    endif 
+    lopen
 
 endfunction
 command! SearchStringCurrentBuffer call SearchStringCurrentBuffer()
@@ -315,7 +291,7 @@ nmap <M-a> 0
 "show marks
 nmap <M-2> :marks <CR>
 nmap <M-1> %
-nmap <M-l> :pc<CR> :ccl<CR>
+nmap <M-l> :pc<CR> :lcl<CR>
 
 "set encoding
 set fileencodings=utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1,ucs-bom
@@ -338,7 +314,7 @@ nmap <F6> :TlistClose<CR> :JavaBrowser <CR>
 
 "grep -E 
 nmap <M-s> :CscopeSearchStringPattern<CR>
-nmap <M-q> :ccl <CR>
+nmap <M-q> :lcl <CR>
 nmap <F8> :edit ++ff=dos <CR>
 "=> minibufer set
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
