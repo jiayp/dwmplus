@@ -185,7 +185,7 @@ function! CscopeFindFilePattern()
 
     let pattern = "'" . pattern . "'" 
     let tmpfile = '~/.gvim.tmp' . getpid() 
-    let real_cmd = '!grep  -E ' . pattern . ' cscope.files  > '  . tmpfile
+    let real_cmd = '!grep  -i -E ' . pattern . ' cscope.files  > '  . tmpfile
     execute "silent! " . real_cmd
 
     let ef = &errorformat 
