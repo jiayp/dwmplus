@@ -85,10 +85,11 @@ if has("win32")
 else
     if has("gui_running")
         colorscheme ljyat
+        set guioptions-=m
+        set guioptions-=T
+    else
+        colorscheme desertEx
     endif
-
-    set guioptions-=m
-    set guioptions-=T
 endif
 
 let NERDTreeWinPos = "right"
