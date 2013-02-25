@@ -137,7 +137,7 @@ function! CscopeSearchStringPattern()
     endif
 
     echohl Question
-    let pattern = input("  Search string: ", expand("<cword>"))
+    let pattern = input("  Search str: ")
 	echohl None
 
     if pattern == ""
@@ -220,7 +220,7 @@ function! SearchStringCurrentBuffer()
     endif
 
     echohl Question
-    let pattern = input("  Search string cur buffer: ", expand("<cword>"))
+    let pattern = input("  Search cur-str: ")
 	echohl None
 
     if pattern == ""
