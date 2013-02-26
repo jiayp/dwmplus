@@ -228,7 +228,7 @@ function! SearchStringCurrentBuffer()
     endif
 
     echohl Question
-    let pattern = input("  Search cur-str: ")
+    let pattern = input("  Search cur-str: ", expand("<cword>"))
 	echohl None
 
     if pattern == ""
