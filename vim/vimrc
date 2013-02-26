@@ -149,6 +149,7 @@ function! CscopeSearchStringPattern()
     let pattern = "'" . pattern . "'" 
     let tmpfile = '~/.gvim.tmp' . getpid() 
     let real_cmd = '!grep -n -E ' . pattern . ' `cat cscope.files` > ' . tmpfile
+    echomsg "Searching all-str..."
     execute "silent! " . real_cmd
     
     if v:version >= 700 
@@ -161,6 +162,8 @@ function! CscopeSearchStringPattern()
         endif
     endif
 
+    echomsg ""
+    redraw
     " Open the quickfix window below the current window
     lopen
 
@@ -187,6 +190,7 @@ function! CscopeFindFilePattern()
     let pattern = "'" . pattern . "'" 
     let tmpfile = '~/.gvim.tmp' . getpid() 
     let real_cmd = '!grep  -i -E ' . pattern . ' cscope.files  > '  . tmpfile
+    echomsg "Searching file..."
     execute "silent! " . real_cmd
 
     let ef = &errorformat 
@@ -202,6 +206,8 @@ function! CscopeFindFilePattern()
         endif
     endif
 
+    echomsg ""
+    redraw
     " Open the quickfix window below the current window
     lopen
 
@@ -231,8 +237,11 @@ function! SearchStringCurrentBuffer()
 
     let pattern = "/" . pattern . "/" 
     let real_cmd = "lvimgrep " . pattern . " %"
+    echomsg "Searching cur-str..."
     execute "silent! " . real_cmd
     
+    echomsg ""
+    redraw
     " Open the quickfix window below the current window
     lopen
 
