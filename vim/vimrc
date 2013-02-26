@@ -137,7 +137,7 @@ function! CscopeSearchStringPattern()
     endif
 
     echohl Question
-    let pattern = input("  Search str: ")
+    let pattern = input("  Search all-str: ")
 	echohl None
 
     if pattern == ""
