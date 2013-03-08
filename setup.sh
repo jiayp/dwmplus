@@ -88,13 +88,16 @@ function vim_replace()
     pattern=$2
     rep_pattern=$3
     filelist=`cat $1`
-
+    repeatfile=""
     for arg in $filelist
-        do
+    do
+        if [[ $arg != $repeatfile ]];then
             cat $arg |sed "s/$pattern/$rep_pattern/" > ~/.gvim_repfile
             rm $arg 
             cp -rf ~/.gvim_repfile $arg
             rm  ~/.gvim_repfile
+        fi
+        repeatfile=$arg
     done
 }
 function ll()
