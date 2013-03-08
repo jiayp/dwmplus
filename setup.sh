@@ -92,7 +92,7 @@ function vim_replace()
     for arg in $filelist
     do
         if [[ $arg != $repeatfile ]];then
-            cat $arg |sed "s/$pattern/$rep_pattern/" > ~/.gvim_repfile
+            sed "s/$pattern/$rep_pattern/" $arg  > ~/.gvim_repfile
             rm $arg 
             cp -rf ~/.gvim_repfile $arg
             rm  ~/.gvim_repfile
