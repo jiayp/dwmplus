@@ -79,6 +79,24 @@ function cscleana()
     fi
 }
 
+function vim_replace()
+{
+    if [[ $# != 3 ]];then
+        return
+    fi
+
+    pattern=$2
+    rep_pattern=$3
+    filelist=`cat $1`
+
+    for arg in $filelist
+        do
+            cat $arg |sed "s/$pattern/$rep_pattern/" > ~/.gvim_repfile
+            rm $arg 
+            cp -rf ~/.gvim_repfile $arg
+            rm  ~/.gvim_repfile
+    done
+}
 function ll()
 {
     ls -l $*
