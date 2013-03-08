@@ -14,7 +14,6 @@ runtime! debian.vim
 " NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
 " options, so any other options should be set AFTER setting 'compatible'.
 "set compatible
-
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
 if has("syntax")
@@ -205,7 +204,7 @@ function! CscopeReplaceStringPattern()
 
     redraw
     echomsg "Replacing str..."
-    execute "silent! !~/bin/vim_replace.sh " . tmpfile . " " . pattern . " " . replace_str  
+    execute "silent! !~/.vim/vim_replace.sh " . tmpfile . " " . pattern . " " . replace_str  
     redraw
     echomsg ""
 	echohl None
