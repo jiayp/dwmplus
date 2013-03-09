@@ -136,7 +136,7 @@ function! CscopeSearchStringPattern()
     endif
 
     echohl Question
-    let pattern = input("  Search all-str: ")
+    let pattern = input("  Search all-str: ", expand("<cword>"))
 	echohl None
 
     if pattern == ""
@@ -180,7 +180,7 @@ function! CscopeReplaceStringPattern()
     endif
 
     echohl Question
-    let pattern = input("  Replace str: ")
+    let pattern = input("  Replace str: ", expand("<cword>"))
 
     if pattern == ""
         return 
