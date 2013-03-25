@@ -17,7 +17,7 @@ runtime! debian.vim
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
 if has("syntax")
-  syntax on
+    syntax on
 endif
 
 " If using a dark background within the editing area and syntax highlighting
@@ -33,7 +33,7 @@ endif
 " Uncomment the following to have Vim load indentation rules and plugins
 " according to the detected filetype.
 if has("autocmd")
-  filetype plugin indent on
+    filetype plugin indent on
 endif
 
 " The following are commented out as they cause vim to behave a lot
@@ -49,7 +49,7 @@ set mouse=a		" Enable mouse usage (all modes)
 
 " Source a global configuration file if available
 if filereadable("/etc/vim/vimrc.local")
-  source /etc/vim/vimrc.local
+    source /etc/vim/vimrc.local
 endif
 
 set nocp
@@ -81,7 +81,7 @@ set diffopt=filler,vertical
 
 "colorscheme habilight 
 if has("win32")
-"not set colorscheme in windows
+    "not set colorscheme in windows
 else
     if has("gui_running")
         colorscheme ljyat
@@ -103,28 +103,28 @@ nmap <F3> :NERDTreeOpenBufDir<CR>
 "=> cscope set
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has("cscope")
-	set csprg=/usr/bin/cscope
-	set csto=1
-	set cst
-	set nocsverb
-	" add any database in current directory
-	if filereadable("cscope.out")
-	    cs add cscope.out
-	" else add database pointed to by environment
-	elseif $CSCOPE_DB != ""
-	    cs add $CSCOPE_DB
-	endif
-	set csverb
+    set csprg=/usr/bin/cscope
+    set csto=1
+    set cst
+    set nocsverb
+    " add any database in current directory
+    if filereadable("cscope.out")
+        cs add cscope.out
+        " else add database pointed to by environment
+    elseif $CSCOPE_DB != ""
+        cs add $CSCOPE_DB
+    endif
+    set csverb
 endif
 
 function! CscopeReload_cs()
-	if has("cscope")
-		set nocscopeverbose
-		cs kill -1
-		cs add  cscope.out
-		"exe "cs add cscope.out"
-		set cscopeverbose
-	endif
+    if has("cscope")
+        set nocscopeverbose
+        cs kill -1
+        cs add  cscope.out
+        "exe "cs add cscope.out"
+        set cscopeverbose
+    endif
 endfunction
 command! R call CscopeReload_cs()
 
@@ -138,7 +138,7 @@ function! CscopeSearchStringPattern()
 
     echohl Question
     let pattern = input("  Search all-str: ", expand("<cword>"))
-	echohl None
+    echohl None
 
     if pattern == ""
         return 
@@ -152,7 +152,7 @@ function! CscopeSearchStringPattern()
     redraw
     echomsg "Searching all-str..."
     execute "silent! " . real_cmd
-    
+
     if v:version >= 700 
         execute "silent! lgetfile " . tmpfile
     else
@@ -208,7 +208,7 @@ function! CscopeReplaceStringPattern()
     execute "silent! !~/.vim/vim_replace.sh " . tmpfile . " " . pattern . " " . replace_str  
     redraw
     echomsg ""
-	echohl None
+    echohl None
 
     execute "silent! !rm -rf " . tmpfile
 endfunction
@@ -224,7 +224,7 @@ function! CscopeFindFilePattern()
 
     echohl Question
     let pattern = input("  Search file: ")
-	echohl None
+    echohl None
 
     if pattern == ""
         return 
@@ -271,7 +271,7 @@ function! SearchStringCurrentBuffer()
 
     echohl Question
     let pattern = input("  Search cur-str: ", expand("<cword>"))
-	echohl None
+    echohl None
 
     if pattern == ""
         return 
@@ -284,7 +284,7 @@ function! SearchStringCurrentBuffer()
     redraw
     echomsg "Searching cur-str..."
     execute "silent! " . real_cmd
-    
+
     redraw
     echomsg ""
     " Open the quickfix window below the current window
