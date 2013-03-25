@@ -67,6 +67,7 @@ set smarttab
 set linebreak
 set nobackup
 set guifont=Inconsolata\ Medium\ 11
+set backspace=indent,eol,start
 "set guifont=Monaco\ Medium\ 9
 set t_Co=256
 set nowrapscan
@@ -81,6 +82,7 @@ set diffopt=filler,vertical
 
 "colorscheme habilight 
 if has("win32")
+    set guifont=Inconsolata:h12:b:cANSI
     "not set colorscheme in windows
 else
     if has("gui_running")
