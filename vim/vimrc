@@ -55,7 +55,6 @@ endif
 set nocp
 set updatetime=100
 set nu
-"set mousefocus
 "set hlsearch
 set autoindent
 set smartindent
@@ -81,10 +80,9 @@ set diffopt=filler,vertical
 "set foldmethod=manual
 "set foldlevel=3
 
-"colorscheme habilight 
 if has("win32")
-    set guifont=Inconsolata:h12:b:cANSI
-    "not set colorscheme in windows
+    "set guifont=Inconsolata:h12:b:cANSI
+    set guifont=新宋体:h12:cGB2312
 else
     if has("gui_running")
         colorscheme ljyat
