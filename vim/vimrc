@@ -66,8 +66,9 @@ set et
 set smarttab
 set linebreak
 set nobackup
-set guifont=Inconsolata\ Medium\ 11
 set backspace=indent,eol,start
+
+set guifont=Inconsolata\ Medium\ 11
 "set guifont=Monaco\ Medium\ 9
 set t_Co=256
 set nowrapscan
