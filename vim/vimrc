@@ -57,6 +57,7 @@ set updatetime=100
 set nu
 "set mousefocus
 "set hlsearch
+set autoindent
 set smartindent
 set cindent 
 set tabstop=4
