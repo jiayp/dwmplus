@@ -146,11 +146,33 @@ function! CscopeSearchStringPattern()
     execute "silent! Mark " . pattern 
 
     let pattern = "'" . pattern . "'" 
-    let tmpfile = '~/.gvim.tmp' . getpid() 
+    let tmpfile = $HOME . '/.gvim.tmp' . getpid() 
     let real_cmd = '!grep -n -E ' . pattern . ' `cat cscope.files` > ' . tmpfile
     redraw
     echomsg "Searching all-str..."
     execute "silent! " . real_cmd
+
+python << EOF
+import vim
+import re
+
+fname = vim.eval('tmpfile')
+f = open(fname, 'r')
+flist=f.readlines()
+f.close()
+
+old = ''
+new = ''
+args = ''
+for new in flist:
+    new = re.sub('\:.+$', ' ', new)
+    new = new.strip('\n')
+    new = new.strip('\r')
+    if old != new:
+        args = args  + new
+    old = new
+vim.command('args ' + args)
+EOF
 
     if v:version >= 700 
         execute "silent! lgetfile " . tmpfile
@@ -170,48 +192,6 @@ function! CscopeSearchStringPattern()
     execute "silent! !rm -rf " . tmpfile
 endfunction
 command! CscopeSearchStringPattern call CscopeSearchStringPattern()
-
-function! CscopeReplaceStringPattern()
-    if !filereadable("cscope.files")
-        echohl Special
-        echo "   cscope.files not exist"
-        echohl None
-        return
-    endif
-
-    echohl Question
-    let pattern = input("  Replace str: ", expand("<cword>"))
-
-    if pattern == ""
-        return 
-    endif
-
-    let pattern = "'" . pattern . "'" 
-
-    let replace_str = input("  Replace str with: ")
-
-    if replace_str == ""
-        return 
-    endif
-
-    let replace_str = "'" . replace_str . "'" 
-
-    let tmpfile = '~/.gvim.tmp' . getpid() 
-    let real_cmd = "!grep -n -E " . pattern . " `cat cscope.files` |sed 's/\:.\\+$//'  > " . tmpfile
-    redraw
-    echomsg "Searching all-str..."
-    execute "silent! " . real_cmd
-
-    redraw
-    echomsg "Replacing str..."
-    execute "silent! !~/.vim/vim_replace.sh " . tmpfile . " " . pattern . " " . replace_str  
-    redraw
-    echomsg ""
-    echohl None
-
-    execute "silent! !rm -rf " . tmpfile
-endfunction
-command! CscopeReplaceStringPattern call CscopeReplaceStringPattern()
 
 function! CscopeFindFilePattern()
     if !filereadable("cscope.files")
@@ -294,7 +274,6 @@ command! SearchStringCurrentBuffer call SearchStringCurrentBuffer()
 
 nmap <C-s> :SearchStringCurrentBuffer <CR>
 nmap <M-f> :CscopeFindFilePattern <CR>
-nmap <M-r> :CscopeReplaceStringPattern <CR>
 
 "
 "function! LoadCscope()
