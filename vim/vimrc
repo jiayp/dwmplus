@@ -168,7 +168,7 @@ for new in flist:
     new = re.sub('\:.+$', '', new)
     new = new.strip()
     if old != new:
-        args = args  + new + ' '
+        args = args + new + ' '
     old = new
 vim.command('args ' + args)
 EOF
