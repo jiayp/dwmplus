@@ -128,8 +128,10 @@ function! CscopeReload_cs()
         set nocscopeverbose
         cs kill -1
         cs add  cscope.out
-        "exe "cs add cscope.out"
         set cscopeverbose
+        echohl Question
+        echo '  Add cscope.out'
+        echohl None
     endif
 endfunction
 command! R call CscopeReload_cs()
