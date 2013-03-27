@@ -118,6 +118,13 @@ endif
 
 function! CscopeReload_cs()
     if has("cscope")
+        if !filereadable("cscope.out")
+            echohl Special
+            echo "   cscope.out not exist"
+            echohl None
+            return
+        endif
+
         set nocscopeverbose
         cs kill -1
         cs add  cscope.out
