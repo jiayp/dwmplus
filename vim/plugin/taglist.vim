@@ -225,7 +225,7 @@ if !exists('loaded_taglist')
 
     " Display the tags for only one file in the taglist window
     if !exists('Tlist_Show_One_File')
-        let Tlist_Show_One_File = 0
+        let Tlist_Show_One_File = 1
     endif
 
     if !exists('Tlist_Max_Submenu_Items')
