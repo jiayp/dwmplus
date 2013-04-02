@@ -136,7 +136,7 @@ function! CscopeReload_cs()
 endfunction
 command! R call CscopeReload_cs()
 
-function! CscopeSearchStringPattern()
+function! CscopeSearchStringPattern(pattern_arg)
     if !filereadable("cscope.files")
         echohl Special
         echo "   cscope.files not exist"
@@ -145,7 +145,11 @@ function! CscopeSearchStringPattern()
     endif
 
     echohl Question
-    let pattern = input("  Search all-str: ", expand("<cword>"))
+    if a:pattern_arg != ''
+        let pattern = input("  Search all-str: ", a:pattern_arg)
+    else
+        let pattern = input("  Search all-str: ", expand("<cword>"))
+    endif
     echohl None
 
     if pattern == ""
@@ -199,7 +203,7 @@ EOF
 
     execute "silent! !rm -rf " . tmpfile
 endfunction
-command! CscopeSearchStringPattern call CscopeSearchStringPattern()
+command! CscopeSearchStringPattern call CscopeSearchStringPattern('')
 
 function! CscopeFindFilePattern()
     if !filereadable("cscope.files")
@@ -280,9 +284,17 @@ function! SearchStringCurrentBuffer()
 endfunction
 command! SearchStringCurrentBuffer call SearchStringCurrentBuffer()
 
+function! VirCscopeSearchStringPattern()
+    let old = @"
+    exe "normal! gvy"
+    let pattern = @"
+    call CscopeSearchStringPattern(pattern)
+    let @" = old
+endfunction
+
 nmap <C-s> :SearchStringCurrentBuffer <CR>
 nmap <M-f> :CscopeFindFilePattern <CR>
-
+vnoremap <M-r> <ESC>:call VirCscopeSearchStringPattern() <CR>
 "
 "function! LoadCscope()
 "	let db = findfile("cscope.out", ".;")
@@ -391,3 +403,4 @@ autocmd FileType c,cpp,java,cs set omnifunc=ccomplete#Complete
 
 " => Set OminComplete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
