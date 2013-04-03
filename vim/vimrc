@@ -284,7 +284,7 @@ function! SearchStringCurrentBuffer()
 endfunction
 command! SearchStringCurrentBuffer call SearchStringCurrentBuffer()
 
-function! VirCscopeSearchStringPattern()
+function! VCscopeSearchStringPattern()
     let old = @"
     exe "normal! gvy"
     let pattern = @"
@@ -294,7 +294,7 @@ endfunction
 
 nmap <C-s> :SearchStringCurrentBuffer <CR>
 nmap <M-f> :CscopeFindFilePattern <CR>
-vnoremap <M-r> <ESC>:call VirCscopeSearchStringPattern() <CR>
+vnoremap <M-r> <ESC>:call VCscopeSearchStringPattern() <CR>
 "
 "function! LoadCscope()
 "	let db = findfile("cscope.out", ".;")
