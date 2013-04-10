@@ -87,7 +87,7 @@ else
         set guioptions-=m
         set guioptions-=T
     else
-        colorscheme desertEx
+        colorscheme desert
     endif
 endif
 
