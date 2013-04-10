@@ -1,7 +1,8 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const char font[]            = "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*";
+//static const char font[]            = "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*";
+static const char font[]            = "WenQuanYi Micro Hei:size=11";
 static const char normbordercolor[] = "#444444";
 static const char normbgcolor[]     = "#222222";
 static const char normfgcolor[]     = "#bbbbbb";
@@ -19,9 +20,15 @@ static const Bool topbar            = True;     /* False means bottom bar */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            True,        -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       False,       -1 },
+    /* class      instance    title       tags mask     isfloating   monitor */
+    { "Gimp",           NULL,       NULL,       0,            True,        -1 },
+    { "Wine",           NULL,       NULL,       0,            True,        -1 },
+    { "Firefox",        NULL,       NULL,       1 << 8,       False,       -1 },
+    { "Stardict",       NULL,       NULL,       0,            True,        -1 },
+    { "Iptux",          NULL,       NULL,       0,            True,        -1 },
+    { "Thunderbird",    NULL,       NULL,       1<<4,         True,        -1 },
+    { "VirtualBox",     NULL,	    NULL,		1<<3,		  True,		   -1 },
+    { "Smplayer",       NULL,       NULL,       0,            True,        -1 },
 };
 
 /* layout(s) */
@@ -34,6 +41,7 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+    { "[#]" ,     grid },
 };
 
 /* key definitions */
@@ -50,6 +58,11 @@ static const Layout layouts[] = {
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "terminal", NULL };
+
+static const char *browsercmd[]  = { "google-chrome", NULL };
+static const char *mailcmd[]     = { "thunderbird", NULL };
+static const char *stardict[]    = { "stardict", NULL };
+static const char *filemgrcmd[]  = { "xfe", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -68,6 +81,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
@@ -76,6 +90,12 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_w,      spawn,          {.v = browsercmd } },	
+	{ MODKEY,                       XK_s,      spawn,          {.v = stardict} },
+	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = mailcmd} },		
+
+
+
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
