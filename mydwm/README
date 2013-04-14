@@ -49,3 +49,22 @@ Configuration
 -------------
 The configuration of dwm is done by creating a custom config.h
 and (re)compiling the source code.
+
+added in /etc/profile
+
+feh --bg-fill /home/lijy/Documents/back.jpg  &
+nm-applet &
+gnome-sound-applet &
+while true
+do
+    pre_state=`cat /proc/acpi/battery/BAT1/state|awk '/present:/{print $2}'`
+    if [[ $pre_state = 'yes' ]];then
+        full=`cat /proc/acpi/battery/BAT1/info|awk '/full capacity:/{print $4}'`
+        remain=`cat /proc/acpi/battery/BAT1/state|awk '/remaining capacity:/{print $3}'`
+        info="battery: `echo $remain*100/$full|bc`%  `date "+%F %A %R"`"
+    else
+        info="`date "+%F %A %R"`"
+    fi
+    xsetroot -name "$info"
+    sleep 1m
+done &
