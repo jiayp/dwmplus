@@ -1,37 +1,26 @@
-deb http://ubuntu.cn99.com/ubuntu/ hardy main restricted universe multiverse
-deb http://ubuntu.cn99.com/ubuntu/ hardy-security main restricted universe multiverse
-deb http://ubuntu.cn99.com/ubuntu/ hardy-updates main restricted universe multiverse
-deb http://ubuntu.cn99.com/ubuntu/ hardy-proposed main restricted universe multiverse
-deb http://ubuntu.cn99.com/ubuntu/ hardy-backports main restricted universe multiverse
-deb-src http://ubuntu.cn99.com/ubuntu/ hardy main restricted universe multiverse
-deb-src http://ubuntu.cn99.com/ubuntu/ hardy-security main restricted universe multiverse
-deb-src http://ubuntu.cn99.com/ubuntu/ hardy-updates main restricted universe multiverse
-deb-src http://ubuntu.cn99.com/ubuntu/ hardy-proposed main restricted universe multiverse
-deb-src http://ubuntu.cn99.com/ubuntu/ hardy-backports main restricted universe multiverse
+#deb http://free.nchc.org.tw/linuxmint/packages/ maya main upstream import
+#deb http://archive.ubuntu.com/ubuntu/ precise main restricted universe multiverse
+#deb http://archive.ubuntu.com/ubuntu/ precise-updates main restricted universe multiverse
+#deb http://security.ubuntu.com/ubuntu/ precise-security main restricted universe multiverse
+#deb http://archive.canonical.com/ubuntu/ precise partner
+#deb http://packages.medibuntu.org/ precise free non-free
 
-deb http://mirror.lupaworld.com/ubuntu hardy main restricted universe multiverse
-deb http://mirror.lupaworld.com/ubuntu hardy-security main restricted universe multiverse
-deb http://mirror.lupaworld.com/ubuntu hardy-updates main restricted universe multiverse
-deb http://mirror.lupaworld.com/ubuntu hardy-backports main restricted universe multiverse
-deb http://mirror.lupaworld.com/ubuntu hardy-proposed main restricted universe multiverse
-deb-src http://mirror.lupaworld.com/ubuntu hardy main restricted universe multiverse
-deb-src http://mirror.lupaworld.com/ubuntu hardy-security main restricted universe multiverse
-deb-src http://mirror.lupaworld.com/ubuntu hardy-updates main restricted universe multiverse
-deb-src http://mirror.lupaworld.com/ubuntu hardy-backports main restricted universe multiverse
-deb-src http://mirror.lupaworld.com/ubuntu hardy-proposed main restricted universe multiverse
+# deb http://archive.getdeb.net/ubuntu precise-getdeb apps
+# deb http://archive.getdeb.net/ubuntu precise-getdeb games
 
-deb http://archive.ubuntu.com/ubuntu/ hardy main restricted universe multiverse
-deb http://archive.ubuntu.com/ubuntu/ hardy-security main restricted universe multiverse
-deb http://archive.ubuntu.com/ubuntu/ hardy-updates main restricted universe multiverse
-deb http://archive.ubuntu.com/ubuntu/ hardy-proposed main restricted universe multiverse
-deb http://archive.ubuntu.com/ubuntu/ hardy-backports main restricted universe multiverse
-deb-src http://archive.ubuntu.com/ubuntu/ hardy main restricted universe multiverse
-deb-src http://archive.ubuntu.com/ubuntu/ hardy-security main restricted universe multiverse
-deb-src http://archive.ubuntu.com/ubuntu/ hardy-updates main restricted universe multiverse
-deb-src http://archive.ubuntu.com/ubuntu/ hardy-proposed main restricted universe multiverse
-deb-src http://archive.ubuntu.com/ubuntu/ hardy-backports main restricted universe multiverse
 
-deb http://www.telemail.fi/mlind/ubuntu feisty fonts 
-deb-src http://www.telemail.fi/mlind/ubuntu feisty fonts
+#add
+#deb ftp://mirrors.ustc.edu.cn/linuxmint/ maya main upstream import
+deb http://ftp.de.debian.org/debian squeeze main 
+deb http://mirrors.163.com/ubuntu/ precise main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ precise-updates main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ precise-security main restricted universe multiverse
+deb http://archive.canonical.com/ubuntu/ precise partner
+deb http://packages.medibuntu.org/ precise free non-free
 
-deb http://packages.medibuntu.org/ hardy free non-free
+
+deb-src http://mirrors.163.com/ubuntu/ precise main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ precise-security main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ precise-updates main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ precise-proposed main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ precise-backports main restricted universe multiverse
