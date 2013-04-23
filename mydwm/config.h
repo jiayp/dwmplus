@@ -4,8 +4,8 @@
 //static const char font[]            = "-*-terminus-medium-r-*-*-16-*-*-*-*-*-*-*";
 static const char font[]            = "WenQuanYi Micro Hei:size=11";
 static const char normbordercolor[] = "#444444";
-static const char normbgcolor[]     = "#222222";
-static const char normfgcolor[]     = "#bbbbbb";
+static const char normbgcolor[]     = "#bbbbbb";
+static const char normfgcolor[]     = "#222222";
 static const char selbordercolor[]  = "#005577";
 static const char selbgcolor[]      = "#005577";
 static const char selfgcolor[]      = "#eeeeee";
@@ -62,7 +62,7 @@ static const char *termcmd[]  = { "terminal", NULL };
 static const char *browsercmd[]  = { "google-chrome", NULL };
 static const char *mailcmd[]     = { "thunderbird", NULL };
 static const char *stardict[]    = { "stardict", NULL };
-static const char *filemgrcmd[]  = { "xfe", NULL };
+static const char *filemgrcmd[]  = { "gnome-commander", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -93,6 +93,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_w,      spawn,          {.v = browsercmd } },	
 	{ MODKEY,                       XK_s,      spawn,          {.v = stardict} },
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = mailcmd} },		
+	{ MODKEY,                       XK_e,      spawn,          {.v = filemgrcmd} },
 
 
 
