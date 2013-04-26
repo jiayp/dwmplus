@@ -295,8 +295,8 @@ function! VCscopeSearchStringPattern()
     let @" = old
 endfunction
 
-nmap <C-s> :SearchStringCurrentBuffer <CR>
-nmap <M-f> :CscopeFindFilePattern <CR>
+nmap <C-s> :CSS <CR>
+nmap <M-f> :CSF <CR>
 vnoremap <M-r> <ESC>:call VCscopeSearchStringPattern() <CR>
 "
 "function! LoadCscope()
