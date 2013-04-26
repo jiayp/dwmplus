@@ -136,7 +136,8 @@ function! CscopeReload_cs()
 endfunction
 command! R call CscopeReload_cs()
 
-function! CscopeSearchStringPattern(pattern_arg)
+"CscopeSearchStringPattern
+function! CSS(pattern_arg)
     if !filereadable("cscope.files")
         echohl Special
         echo "   cscope.files not exist"
@@ -203,9 +204,10 @@ EOF
 
     execute "silent! !rm -rf " . tmpfile
 endfunction
-command! CscopeSearchStringPattern call CscopeSearchStringPattern('')
+command! CSS call CSS('')
 
-function! CscopeFindFilePattern()
+"CscopeFindFilePattern
+function! CSF()
     if !filereadable("cscope.files")
         echohl Special
         echo "   cscope.files not exist"
@@ -249,7 +251,8 @@ function! CscopeFindFilePattern()
     let &errorformat = ef 
     execute "silent! !rm -rf " . tmpfile
 endfunction
-command! CscopeFindFilePattern call CscopeFindFilePattern()
+"CscopeFindFilePattern
+command! CSF call CSF()
 
 function! SearchStringCurrentBuffer()
     let curfilename = expand("%")
@@ -288,7 +291,7 @@ function! VCscopeSearchStringPattern()
     let old = @"
     exe "normal! gvy"
     let pattern = @"
-    call CscopeSearchStringPattern(pattern)
+    call CSS(pattern)
     let @" = old
 endfunction
 
