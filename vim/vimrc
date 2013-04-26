@@ -295,7 +295,7 @@ function! VCscopeSearchStringPattern()
     let @" = old
 endfunction
 
-nmap <C-s> :CSS <CR>
+nmap <C-s> :SearchStringCurrentBuffer <CR>
 nmap <M-f> :CSF <CR>
 vnoremap <M-r> <ESC>:call VCscopeSearchStringPattern() <CR>
 "
@@ -370,7 +370,7 @@ nmap <F5> :MarkClear<CR> :nohlsearch <CR>
 nmap <F6> :TlistClose<CR> :JavaBrowser <CR>
 
 "grep -E 
-nmap <M-s> :CscopeSearchStringPattern<CR>
+nmap <M-s> :CSS<CR>
 nmap <M-q> :lcl <CR>
 nmap <F8> :edit ++ff=dos <CR>
 "=> minibufer set
