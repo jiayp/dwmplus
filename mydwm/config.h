@@ -26,7 +26,7 @@ static const Rule rules[] = {
     { "Firefox",        NULL,       NULL,       1 << 8,       False,       -1 },
     { "Stardict",       NULL,       NULL,       0,            True,        -1 },
     { "Iptux",          NULL,       NULL,       0,            True,        -1 },
-    { "Thunderbird",    NULL,       NULL,       1<<4,         True,        -1 },
+    { "Sylpheed",    NULL,       NULL,       1<<4,         True,        -1 },
     { "VirtualBox",     NULL,	    NULL,		1<<3,		  True,		   -1 },
     { "Smplayer",       NULL,       NULL,       0,            True,        -1 },
 };
