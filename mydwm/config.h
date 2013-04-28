@@ -60,7 +60,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, 
 static const char *termcmd[]  = { "terminal", NULL };
 
 static const char *browsercmd[]  = { "google-chrome", NULL };
-static const char *mailcmd[]     = { "thunderbird", NULL };
+static const char *mailcmd[]     = { "sylpheed", NULL };
 static const char *stardict[]    = { "stardict", NULL };
 static const char *filemgrcmd[]  = { "gnome-commander", NULL };
 
