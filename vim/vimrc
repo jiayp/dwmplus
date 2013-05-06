@@ -161,7 +161,7 @@ function! CSS(pattern_arg)
 
     let pattern = "'" . pattern . "'" 
     let tmpfile = $HOME . '/.gvim.tmp' . getpid() 
-    let real_cmd = '!grep -n -E ' . pattern . ' `cat cscope.files` > ' . tmpfile
+    let real_cmd = '!cat cscope.files|xargs grep -n -E ' . pattern . '  > ' . tmpfile
     redraw
     echomsg "Searching all-str..."
     execute "silent! " . real_cmd
