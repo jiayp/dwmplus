@@ -52,6 +52,10 @@ if filereadable("/etc/vim/vimrc.local")
     source /etc/vim/vimrc.local
 endif
 
+"set runtimepath
+set rtp+=/home/lijy/.vim
+set rtp+=/home/lijy/.vim/after
+
 set nocp
 set updatetime=100
 set nu
